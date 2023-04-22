@@ -1,0 +1,18 @@
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            {{> courses-navbar courses=courses active=active}}
+        </div>
+        <div class="col-md-8 text-center">
+            <h2>{{course.description}}</h2>
+            <img src="{{course.image}}" class="w-100">
+            <p>{{course.detail}}</p>
+            <a href="../HTML/DangKyKhoaHoc.html">
+                <button class="btn btn-red btn-mb20">Đăng ký</button>
+            </a>
+        </div>
+        <div class="col-md-2">
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                {{#each courses}}
+                    <div class="col-md-4 p-3">
+                        <a class="card" href="/courses/{{this.slug}}">
+                            <img src="{{this.image}}" class="card-img-top" width="100%">
+                            <div class="card-body text-center">
+                                <p class="card-title">{{this.name}}
+                                    <img src="{{this.icon}}" width="50px">
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="floating-border">
+                <h2 class="text-center text-bold">Cảm nhận của phụ huynh về các khóa học của Funlish</h2>
+                <article>
+                    <h3>Title</h3>
+                    <p>Content</p>
+                </article>
+                <article>
+                    <h3>Title</h3>
+                    <p>Content</p>
+                </article>
+                <article>
+                    <h3>Title</h3>
+                    <p>Content</p>
+                </article>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&lt;</a>
+                    </li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">&gt;</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+</script>

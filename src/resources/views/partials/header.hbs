@@ -15,14 +15,14 @@
                                 </button>
                             </form>
                         </li>
-                        <li class="nav-item" style="box-shadow: none;"><a class="nav-link" href="../HTML/DangNhap.html">Đăng nhập</a></li>
-                        <li class="nav-item" style="box-shadow: none;"><a class="nav-link" href="../HTML/DangKy.html">Đăng ký</a></li>
+                        <li class="nav-item" style="box-shadow: none;"><a class="nav-link" href="/signin">Đăng nhập</a></li>
+                        <li class="nav-item" style="box-shadow: none;"><a class="nav-link" href="/signup">Đăng ký</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
         <div class="col-md-3 p-2 text-center mt-auto mb-auto">
-            <a href="../HTML/TrangChu.html">
+            <a href="/">
                 <img src="/images/logo.png" width="90%">
             </a>
             <img src="/images/img1.png" width="70%">
@@ -32,13 +32,20 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse menu-bar">
                         <ul class="navbar-nav ms-auto">
+                            {{!-- {{#each menu}}
+                                <li class="nav-item color-" + {{this.image}}>
+                                    <a class="nav-link btn-menu" href={{this.link}}>
+                                        <img src="/images/" + {{this.image}} + ".png" class="btn-img">{{this.name}}
+                                    </a>
+                                </li>
+                            {{/each}} --}}
                             <li class="nav-item color-homepage">
-                                <a class="nav-link active btn-menu" href="../HTML/TrangChu.html">
+                                <a class="nav-link btn-menu active" href="/">
                                     <img src="/images/homepage.png" class="btn-img">Trang chủ
                                 </a>
                             </li>
                             <li class="nav-item color-course">
-                                <a class="nav-link btn-menu" href="../HTML/KhoaHoc.html">
+                                <a class="nav-link btn-menu" href="/courses">
                                     <img src="/images/course.png" class="btn-img">Khóa học
                                 </a>
                             </li>
@@ -48,17 +55,17 @@
                                 </a>
                             </li>
                             <li class="nav-item color-blog">
-                                <a class="nav-link btn-menu" href="../HTML/BlogChiaSe.html">
+                                <a class="nav-link btn-menu" href="/blog">
                                     <img src="/images/blog.png" class="btn-img">Blog chia sẻ
                                 </a>
                             </li>
                             <li class="nav-item color-about">
-                                <a class="nav-link btn-menu" href="../HTML/VeChungToi.html">
+                                <a class="nav-link btn-menu" href="/about">
                                     <img src="/images/about.png" class="btn-img">Về chúng tôi
                                 </a>
                             </li>
                             <li class="nav-item color-contact">
-                                <a class="nav-link btn-menu" href="../HTML/LienHe.html">
+                                <a class="nav-link btn-menu" href="/contact">
                                     <img src="/images/contact.png" class="btn-img">Liên hệ
                                 </a>
                             </li>

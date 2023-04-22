@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-auto me-auto w-100">
+            {{#each courses}}
+                {{!-- <li class="nav-item color-course active-custom"> --}}
+
+                {{!-- {{#if (isEqual active this.slug)}}
+                    <li class="nav-item color-course active-custom" id="{{this.slug}}">
+                        <a class="nav-link" href="/courses/{{this.slug}}">{{this.name}}</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item color-course mt-1 menu" id="{{this.slug}}">
+                        <a class="nav-link" href="/courses/{{this.slug}}">{{this.name}}</a>
+                    </li>
+                {{/if}} --}}
+
+                <li class="nav-item color-course mt-1 menu" id="{{this.slug}}">
+                    <a class="nav-link" href="/courses/{{this.slug}}">{{this.name}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</nav>

@@ -2,8 +2,15 @@
 
 // @font-face {
 //     font-family: "Aptima";
-//     src: url(../Font/UTM\ APTIMA.TTF) format("truetype");
+//     src: url(/src/public/font/UTM APTIMA.TTF) format("truetype");
 // }
+@mixin font-face($family, $path) {
+    @font-face {
+        font-family: $family;
+        src: url($path) format("truetype");
+    }
+}
+@include font-face("Aptima", "/font/UTM\ APTIMA.TTF");
 html * {
     font-family: "Aptima";
 }

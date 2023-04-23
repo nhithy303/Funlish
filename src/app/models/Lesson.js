@@ -3,8 +3,9 @@ const slug = require('mongoose-slug-generator');
 
 const Schema = mongoose.Schema;
 
-const Course = new Schema(
+const Lesson = new Schema(
     {
+        course_id: { type: Schema.Types.ObjectId },
         name: { type: String },
         image: { type: String },
         icon: { type: String },
@@ -20,4 +21,4 @@ const Course = new Schema(
 // Add plugins
 mongoose.plugin(slug);
 
-module.exports = mongoose.model('Course', Course);
+module.exports = mongoose.model('Lesson', Lesson);

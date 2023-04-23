@@ -3,7 +3,7 @@ const express = require('express');
 const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
-const { FALSE } = require('node-sass');
+const session = require('express-session');
 
 // Connect to db
 db.connect();
@@ -17,6 +17,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({
+    secret: 'funlish hcmue',
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 },
+}));
 
 // Template engine
 app.engine('hbs', engine({
@@ -27,7 +33,7 @@ app.engine('hbs', engine({
     // },
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources', 'views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Routing
 route(app);

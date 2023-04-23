@@ -3,7 +3,7 @@ const courseRouter = require('./courses');
 const blogRouter = require('./blog');
 const aboutRouter = require('./about');
 const contactRouter = require('./contact');
-const signRouter = require('./sign');
+const userRouter = require('./users');
 const adminRouter = require('./admin');
 
 const route = (app) => {
@@ -13,7 +13,7 @@ const route = (app) => {
     app.use('/blog', blogRouter);
     app.use('/about', aboutRouter);
     app.use('/contact', contactRouter);
-    app.use('/', signRouter);
+    app.use('/', userRouter);
     app.use('/admin', adminRouter);
 
 }

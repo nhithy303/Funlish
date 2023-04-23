@@ -1,0 +1,56 @@
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="/images/signnow.png" width="50%" style="margin-top: 20px;">
+            <p class="text-sign-1">Đăng nhập bằng</p>
+            <nav>
+                <a href="#" style="padding-right: 10px;"><img src="/images/facebook.png" width="50px"></a>
+                <a href="#" style="padding-left: 10px;"><img src="/images/email.png" width="50px"></a>
+            </nav>
+            <p class="text-sign-1">Hoặc dùng tài khoản đã có</p>
+            <form method="POST" action="/signin" name="signin-form" onsubmit="return validateForm(event)">
+                <input type="text" id="username" name="username" placeholder="Tài khoản">
+                <button type="button" class="btn btn-username" disabled>
+                    <img src="/images/blank.png" class="btn-img">
+                </button>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu">
+                <button type="button" class="btn btn-password" onclick="showHidePassword('password')">
+                    <img src="/images/show-password.png" class="btn-img" id="icon-password">
+                </button>
+                <a href="#" class="btn btn-red btn-160 btn-mb20">Quên mật khẩu?</a><br>
+                <input class="btn btn-red btn-160 btn-mb20" type="submit" value="Đăng nhập">
+            </form>
+        </div>
+        <div class="col-md-6 text-center text-sign-2" style="background-color: #EB452B;">
+            <h2 class="spacing-top">Xin chào!</h2>
+            <p>Điền thông tin của bạn và bắt đầu hành trình học tập nào.</p>
+            <a href="/signup" class="btn btn-white btn-160 spacing-bottom">Đăng ký</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const showHidePassword = (id) => {
+        var password = document.getElementById(id);
+        var icon = document.getElementById(`icon-${id}`);
+        if (password.type === "text") {
+            password.type = "password";
+            icon.src = "/images/show-password.png";
+        }
+        else {
+            password.type = "text";
+            icon.src = "/images/hide-password.png";
+        }
+    }
+    const validateForm = (e) => {
+        const username = document.forms["signin-form"]["username"].value;
+        const password = document.forms["signin-form"]["password"].value;
+        if (username === "" || password === "") {
+            alert("Thông tin tài khoản còn trống!");
+            e.preventDefault();
+        }
+        else {
+            alert("Đăng nhập thành công!");
+        }
+    }
+</script>

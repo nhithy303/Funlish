@@ -2,10 +2,15 @@
 // const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class AboutController {
+
     // [GET] /about
     index(req, res, next) {
-        res.render('user/about');
+        res.render('user/about', {
+            title: "Về chúng tôi |",
+            user: req.session.username,
+        });
     }
+    
 }
 
 module.exports = new AboutController;

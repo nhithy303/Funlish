@@ -88,7 +88,9 @@ hr.title {
 
 .btn-img {
   width: 50px;
-  padding-right: 10px; }
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
 .btn-blue, .btn-blue:hover {
   background-color: #5186CD; }
@@ -123,6 +125,10 @@ hr.title {
 
 .btn-profile {
   padding: 0; }
+
+.btn-password, .btn-repassword {
+  padding-left: 0;
+  padding-right: 0; }
 
 .btn-profile:hover, .btn-username:hover, .btn-password:hover, .btn-repassword:hover {
   filter: brightness(110%);

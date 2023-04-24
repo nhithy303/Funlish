@@ -9,14 +9,11 @@
             </nav>
             <p class="text-sign-1">Hoặc dùng tài khoản đã có</p>
             <form method="POST" action="/signin" name="signin-form" onsubmit="return validateForm(event)">
-                <input type="text" id="username" name="username" placeholder="Tài khoản">
-                <button type="button" class="btn btn-username" disabled>
-                    <img src="/images/blank.png" class="btn-img">
-                </button>
-                <input type="password" id="password" name="password" placeholder="Mật khẩu">
-                <button type="button" class="btn btn-password" onclick="showHidePassword('password')">
+                <input type="text" id="username" name="username" placeholder="Tài khoản"><br>
+                <input style="position: relative;" type="password" id="password" name="password" placeholder="Mật khẩu">
+                <button style="position: absolute;" type="button" class="btn btn-password" onclick="showHidePassword('password')">
                     <img src="/images/show-password.png" class="btn-img" id="icon-password">
-                </button>
+                </button><br>
                 <a href="#" class="btn btn-red btn-160 btn-mb20">Quên mật khẩu?</a><br>
                 <input class="btn btn-red btn-160 btn-mb20" type="submit" value="Đăng nhập">
             </form>
@@ -50,7 +47,7 @@
             e.preventDefault();
         }
         else {
-            alert("Đăng nhập thành công!");
+            // alert("Đăng nhập thành công!");
         }
     }
 </script>

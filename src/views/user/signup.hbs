@@ -9,18 +9,15 @@
             </nav>
             <p class="text-sign-1">Hoặc tạo tài khoản</p>
             <form method="POST" action="/signup" name="signup-form" onsubmit="return validateForm(event)">
-                <input type="text" id="username" name="username" placeholder="Tài khoản">
-                <button type="button" class="btn btn-username" disabled>
-                    <img src="/images/blank.png" class="btn-img">
-                </button>
-                <input type="password" id="password" name="password" placeholder="Mật khẩu">
-                <button type="button" class="btn btn-password" onclick="showHidePassword('password')">
+                <input type="text" id="username" name="username" placeholder="Tài khoản"><br>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu" style="position: relative;">
+                <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('password')">
                     <img src="/images/show-password.png" class="btn-img" id="icon-password">
-                </button>
-                <input type="password" id="repassword" name="repassword" placeholder="Xác nhận mật khẩu">
-                <button type="button" class="btn btn-repassword" onclick="showHidePassword('repassword')">
+                </button><br>
+                <input type="password" id="repassword" name="repassword" placeholder="Xác nhận mật khẩu" style="position: relative;">
+                <button type="button" style="position: absolute;" class="btn btn-repassword" onclick="showHidePassword('repassword')">
                     <img src="/images/show-password.png" class="btn-img" id="icon-repassword">
-                </button>                
+                </button><br>
                 <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Đăng ký">
             </form>
         </div>
@@ -58,7 +55,7 @@
             e.preventDefault();
         }
         else {
-            alert("Đăng ký tài khoản thành công!");
+            // alert("Đăng ký tài khoản thành công!");
         }
     }
 </script>

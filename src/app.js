@@ -4,6 +4,7 @@ const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
 const session = require('express-session');
+const hbsHelpers = require('./helpers/handlebars');
 
 // Connect to db
 db.connect();
@@ -28,9 +29,9 @@ app.use(session({
 app.engine('hbs', engine({
     extname: '.hbs',
     defaultLayout: 'user',
-    // helpers: {
-    //     isEqual: (a, b) => a == b,
-    // },
+    helpers: {
+        formatDate: hbsHelpers.formatDate,
+    },
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));

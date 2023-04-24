@@ -85,7 +85,7 @@ class UserController {
     // [GET] /signout
     signout(req, res, next) {
         req.session.destroy();
-        res.redirect('/signin');
+        res.redirect('back');
     }
     
 }

@@ -1,18 +1,21 @@
 <div class="main container-fluid">
     <div class="row">
         <div class="col-md-2 text-center">
-            {{> profile-navbar active=active}}
+            {{> profile-navbar}}
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-10 text-center">
+            <h1>Khóa học của bé</h1>
+        </div>
+        {{!-- <div class="col-md-6 text-center">
             <p>[Content]</p>
         </div>
         <div class="col-md-4 text-center">
-            <img src="{{user.avatar}}" class="avatar">
+            <img src="{{user.avatar}}" width="100%">
             <h1>{{user.username}}</h1>
             <h2>{{user.name}}</h2>
             <p>{{formatDate user.birthday}}</p>
             <p>{{user.email}}</p>
             <p>{{user.phone}}</p>
-        </div>
+        </div> --}}
     </div>
 </div>

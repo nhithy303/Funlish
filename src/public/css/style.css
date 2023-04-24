@@ -134,6 +134,11 @@ hr.title {
   filter: brightness(110%);
   box-shadow: none; }
 
+.btn-arrow {
+  width: 24px;
+  position: absolute;
+  right: 0; }
+
 /* Navigation bar */
 .nav-item {
   padding: 5px;
@@ -161,15 +166,15 @@ a:hover {
   text-decoration: underline; }
 
 /* Vertical navigation */
-.active-custom, .menu:hover {
+.active-custom, .course-menu:hover {
   background-color: #c5e4f3;
   border-right: 5px solid #1995ED;
   border-radius: 10px 0 0 10px; }
 
-.menu {
+.course-menu {
   border-radius: 10px 0 0 10px; }
 
-.active-custom a {
+.course-menu:hover, .active-custom a {
   color: black; }
 
 .contact img {
@@ -194,9 +199,17 @@ footer .nav-link:hover, footer .nav-link:focus {
   color: white; }
 
 .profile-menu .nav-link {
-  color: black;
-  text-align: left;
-}
+  color: grey;
+  text-align: left; }
+
+.profile-menu:hover .nav-link {
+  color: black; }
+
+.profile-menu:hover .btn-arrow {
+  width: 30px; }
+
+.active-profile .nav-link {
+  color: black; }
 
 /* Text */
 .text-right {
@@ -335,14 +348,15 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 
 /* Chatbox */
 .chat {
-  bottom: 80px;
+  bottom: 20px;
   right: 20px;
   left: auto; }
 
 .up {
+  display: none;
   bottom: 20px;
-  right: 20px;
-  left: auto; }
+  left: 20px;
+  right: auto; }
 
 [chat-title]:hover:after {
   visibility: visible;
@@ -423,3 +437,9 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 
 .dropdown-item:hover .dropdown-item:hover:focus, .dropdown-item:visited {
   background-color: #84CAED; }
+
+.avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  box-shadow: 0 0 3px 1px grey; }

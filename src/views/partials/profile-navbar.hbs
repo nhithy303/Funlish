@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-auto me-auto w-100" style="position: relative;">
+            <li class="nav-item mt-1 profile-menu profile">
+                <a class="nav-link" href="/profile">Thông tin cá nhân
+                    <img src="/images/right-arrow.png" class="btn-arrow">
+                </a>
+            </li>
+            <li class="nav-item mt-1 profile-menu my-course">
+                <a class="nav-link" href="/my-course">Khóa học của bé
+                    <img src="/images/right-arrow.png" class="btn-arrow">
+                </a>
+            </li>
+            <li class="nav-item mt-1 profile-menu settings">
+                <a class="nav-link" href="/settings">Cài đặt
+                    <img src="/images/right-arrow.png" class="btn-arrow">
+                </a>
+            </li>
+            <li class="nav-item mt-1 profile-menu">
+                <a class="nav-link" href="/signout">Đăng xuất
+                    <img src="/images/right-arrow.png" class="btn-arrow">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.getElementsByClassName("{{active}}")[0].classList.add("active-profile");
+</script>

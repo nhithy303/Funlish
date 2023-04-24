@@ -3,3 +3,15 @@
         <img src="/images/up.png" style="width: 50px;">
     </a>
 </div>
+
+<script>
+    var backToTop = document.querySelector(".up");
+    window.addEventListener("scroll", () => {
+        if (!window.scrollY) {
+            backToTop.style.display = "none";
+        }
+        else {
+            backToTop.style.display = "block";
+        }
+    });
+</script>

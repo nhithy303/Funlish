@@ -65,7 +65,7 @@ class UserController {
             .catch(next);
     }
 
-    // [GET] /profile
+    // [GET] /profile/:slug
     profile(req, res, next) {
         if (req.session.username) {
             User.findOne({ username: req.session.username })
@@ -73,6 +73,7 @@ class UserController {
                     res.render('user/profile', {
                         title: "Tài khoản |",
                         user: mongooseToObject(user),
+                        active: "profile",
                     }),
                 )
                 .catch(next);
@@ -86,6 +87,34 @@ class UserController {
     signout(req, res, next) {
         req.session.destroy();
         res.redirect('back');
+    }
+
+    // [GET] /my-course
+    mycourse(req, res, next) {
+        if (req.session.username) {
+            res.render('user/my-course', {
+                title: "Khóa học của bé |",
+                user: req.session.username,
+                active: "my-course",
+            })
+        }
+        else {
+            res.redirect('/signin');
+        }
+    }
+
+    // [GET] /settings
+    settings(req, res, next) {
+        if (req.session.username) {
+            res.render('user/settings', {
+                title: "Cài đặt |",
+                user: req.session.username,
+                active: "settings",
+            })
+        }
+        else {
+            res.redirect('/signin');
+        }
     }
     
 }

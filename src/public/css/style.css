@@ -187,6 +187,11 @@ footer .nav-link {
 footer .nav-link:hover, footer .nav-link:focus {
   color: white; }
 
+.profile-menu .nav-link {
+  color: black;
+  text-align: left;
+}
+
 /* Text */
 .text-right {
   text-align: right; }

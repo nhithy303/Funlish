@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const connectionStr = "mongodb+srv://funlish:cntt4701104@funlish.ixuxxok.mongodb.net/Funlish?retryWrites=true&w=majority";
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/Funlish', {
+        await mongoose.connect(connectionStr, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             // useCreateIndex: true,

@@ -1,8 +1,31 @@
-<h1>Profile</h1>
-<img src="{{user.avatar}}" width="100%">
-<p>{{user.username}}</p>
-<p>{{user.name}}</p>
-<p>{{user.birthday}}</p>
-<p>{{user.email}}</p>
-<p>{{user.phone}}</p>
-<p>{{user.status}}</p>
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-2 text-center" style="border: 1px solid black;">
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <ul class="navbar-nav ms-auto me-auto w-100">
+                        <li class="nav-item mt-1 profile-menu">
+                            <a class="nav-link" href="/profile">Thông tin cá nhân</a>
+                        </li>
+                        <li class="nav-item mt-1 profile-menu">
+                            <a class="nav-link" href="#">Khóa học của bé</a>
+                        </li>
+                        <li class="nav-item mt-1 profile-menu">
+                            <a class="nav-link" href="#">Cài đặt</a>
+                        </li>
+                        <li class="nav-item mt-1 profile-menu">
+                            <a class="nav-link" href="/signout">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="col-md-6 text-center" style="border: 1px solid black;">
+            <p>[Content]</p>
+        </div>
+        <div class="col-md-4 text-center" style="border: 1px solid black;">
+            <img src="{{user.avatar}}" width="100%">
+            <h1>{{user.username}}</h1>
+        </div>
+    </div>
+</div>

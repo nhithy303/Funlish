@@ -4,7 +4,10 @@
 
 html * {
   font-family: "Aptima";
-  /* cursor: url(/images/cursor-pointer.png), pointer; */
+  /* cursor: url(/images/cursor-auto.png), auto; */
+  /* cursor: url(/images/cursor-pointer.png), pointer; */ }
+
+body {
   cursor: url(/images/cursor-auto.png), auto; }
 
 /* Layout */
@@ -154,6 +157,10 @@ hr.title {
 
 .navbar-toggler:focus {
   box-shadow: none; }
+
+a, button {
+  cursor: url(/images/cursor-pointer.png), auto;
+}
 
 a {
   text-decoration: none;

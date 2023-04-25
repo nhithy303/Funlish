@@ -1,5 +1,6 @@
 const homeRouter = require('./home');
 const courseRouter = require('./courses');
+const playRouter = require('./play');
 const blogRouter = require('./blog');
 const aboutRouter = require('./about');
 const contactRouter = require('./contact');
@@ -10,6 +11,7 @@ const route = (app) => {
 
     app.use('/', homeRouter);
     app.use('/courses', courseRouter);
+    app.use('/play', playRouter);
     app.use('/blog', blogRouter);
     app.use('/about', aboutRouter);
     app.use('/contact', contactRouter);

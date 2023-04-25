@@ -4,7 +4,17 @@
             {{> profile-navbar active=active}}
         </div>
         <div class="col-md-6 text-center">
-            <p>[Content]</p>
+            <div class="floating-border">
+                <h3 class="text-bold">Customize your character!</h3>
+                <img src="" width="70%" id="character"><br>
+                {{#each characters}}
+                    <button class="btn btn-character" onclick="changeCharacter('{{this.image}}')">
+                        <img src="{{this.image}}">
+                    </button>
+                {{/each}}
+                <br>
+                <button type="button" class="btn btn-blue" onclick="editAvatar()">Save</button>
+            </div>
         </div>
         <div class="col-md-4 text-center">
             <img src="{{user.avatar}}" class="avatar">
@@ -16,3 +26,22 @@
         </div>
     </div>
 </div>
+
+{{!-- Edit avatar hidden form --}}
+<form method="POST" name="edit-avatar-form">
+    <input type="hidden" name="character">
+</form>
+
+<script>
+    var characterImage;
+    const changeCharacter = (image) => {
+        document.getElementById("character").setAttribute("src", image);
+        characterImage = image;
+    }
+    const editAvatar = () => {
+        var editAvatarForm = document.forms["edit-avatar-form"];
+        document.forms["edit-avatar-form"]["character"].value = characterImage;
+        editAvatarForm.action = "/profile/" + "{{user.username}}" + "?_method=PUT";
+        editAvatarForm.submit();
+    }
+</script>

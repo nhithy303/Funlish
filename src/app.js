@@ -5,6 +5,7 @@ const route = require('./routes');
 const db = require('./config/db');
 const session = require('express-session');
 const hbsHelpers = require('./helpers/handlebars');
+const methodOverride = require('method-override');
 
 // Connect to db
 db.connect();
@@ -18,11 +19,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(methodOverride('_method'));
 app.use(session({
     secret: 'funlish hcmue',
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3600000 },
 }));
 
 // Template engine
@@ -39,4 +41,6 @@ app.set('views', path.join(__dirname, 'views'));
 // Routing
 route(app);
 
-app.listen(port);
+app.listen(port, () =>
+    console.log(`Funlish is starting at http://localhost:${port}`),
+);

@@ -1,5 +1,6 @@
 const Account = require('../models/Account');
 const User = require('../models/User');
+const Character = require('../models/Character');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class UserController {
@@ -65,15 +66,16 @@ class UserController {
             .catch(next);
     }
 
-    // [GET] /profile/:slug
+    // [GET] /profile
     profile(req, res, next) {
         if (req.session.username) {
-            User.findOne({ username: req.session.username })
-                .then(user =>
+            Promise.all([User.findOne({ username: req.session.username }), Character.find({})])
+                .then(([user, characters]) =>
                     res.render('user/profile', {
                         title: "Tài khoản |",
-                        user: mongooseToObject(user),
                         active: "profile",
+                        user: mongooseToObject(user),
+                        characters: multipleMongooseToObject(characters),
                     }),
                 )
                 .catch(next);
@@ -81,6 +83,15 @@ class UserController {
         else {
             res.redirect('/signin');
         }
+    }
+
+    // [PUT] /profile/:username
+    editAvatar(req, res, next) {
+        User.updateOne({ username: req.params.username }, { avatar: req.body.character })
+            .then(() => {
+                res.redirect('back')
+            })
+            .catch(next);
     }
 
     // [GET] /signout

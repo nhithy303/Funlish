@@ -81,7 +81,7 @@ hr.title {
 
 .btn:hover {
   filter: brightness(110%);
-  box-shadow: 0 2px 3px 1px grey; }
+  box-shadow: 0 0 3px 1px grey; }
 
 .btn-menu {
   padding: 0 10px; }
@@ -141,6 +141,14 @@ hr.title {
   width: 24px;
   position: absolute;
   right: 0; }
+
+.btn-character {
+  border-radius: 30px;
+}
+
+.btn-character img {
+  width: 50px;
+}
 
 /* Navigation bar */
 .nav-item {
@@ -380,7 +388,7 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   background-color: #5186CD;
   color: white;
   border-radius: 10px;
-  box-shadow: 0 2px 3px 1px grey; }
+  box-shadow: 0 0 3px 1px grey; }
 
 [chat-title] {
   position: relative; }
@@ -392,7 +400,7 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 .member {
   cursor: pointer;
   /* border: 1px solid black; */
-  box-shadow: 0 2px 3px 1px grey;
+  box-shadow: 0 0 3px 1px grey;
   border-radius: 10px; }
 
 .member img {
@@ -404,7 +412,7 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 .member .info {
   /* border: 1px solid black; */
   /* border-top: 1px dashed grey; */
-  box-shadow: 0 2px 3px 1px grey;
+  box-shadow: 0 0 3px 1px grey;
   border-radius: 0 0 10px 10px; }
 
 .member .name {
@@ -445,8 +453,10 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 .dropdown-item:hover .dropdown-item:hover:focus, .dropdown-item:visited {
   background-color: #84CAED; }
 
+/* Profile */
 .avatar {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   box-shadow: 0 0 3px 1px grey; }
+

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const User = new Schema(
     {
-        username: { type: String },
+        username: { type: String, unique: true },
         name: { type: String, default: '' },
         avatar: { type: String, default: 'https://cdn.pixabay.com/animation/2022/07/30/22/02/22-02-02-999_640.png' },
         birthday: { type: Date, default: Date.now },

@@ -4,19 +4,19 @@
             <img src="/images/signnow.png" width="50%" style="margin-top: 20px;">
             <p class="text-sign-1">Đăng ký bằng</p>
             <nav>
-                <a href="#" style="padding-right: 10px;"><img src="/images/facebook.png" width="50px"></a>
-                <a href="#" style="padding-left: 10px;"><img src="/images/email.png" width="50px"></a>
+                <a href="#" style="padding-right: 10px;"><img src="/images/facebook.png" alt="facebook" width="50px"></a>
+                <a href="#" style="padding-left: 10px;"><img src="/images/email.png" alt="email" width="50px"></a>
             </nav>
             <p class="text-sign-1">Hoặc tạo tài khoản</p>
             <form method="POST" action="/signup" name="signup-form" onsubmit="return validateForm(event)">
                 <input type="text" id="username" name="username" placeholder="Tài khoản"><br>
                 <input type="password" id="password" name="password" placeholder="Mật khẩu" style="position: relative;">
                 <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('password')">
-                    <img src="/images/show-password.png" class="btn-img" id="icon-password">
+                    <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-password">
                 </button><br>
                 <input type="password" id="repassword" name="repassword" placeholder="Xác nhận mật khẩu" style="position: relative;">
                 <button type="button" style="position: absolute;" class="btn btn-repassword" onclick="showHidePassword('repassword')">
-                    <img src="/images/show-password.png" class="btn-img" id="icon-repassword">
+                    <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-repassword">
                 </button><br>
                 <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Đăng ký">
             </form>
@@ -36,10 +36,12 @@
         if (password.type === "text") {
             password.type = "password";
             icon.src = "/images/show-password.png";
+            icon.alt = "show password";
         }
         else {
             password.type = "text";
             icon.src = "/images/hide-password.png";
+            icon.alt = "hide password";
         }
     }
     const validateForm = (e) => {

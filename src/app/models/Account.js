@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const Account = new Schema(
     {
-        username: { type: String },
+        username: { type: String, unique: true },
         password: { type: String },
         singinAt: { type: Date, default: Date.now },
         singoutAt: { type: Date, default: Date.now },

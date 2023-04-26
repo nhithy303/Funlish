@@ -57,7 +57,7 @@ class UserController {
                     req.session.username = account.username;
                     Promise.all([user.save(), account.save()])
                         .then(() => res.redirect('/profile'))
-                        .catch(next);
+                        .catch(next => res.send(next));
                 }
                 else {
                     res.redirect('/signup');

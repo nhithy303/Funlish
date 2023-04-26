@@ -5,10 +5,10 @@
                 {{#each courses}}
                     <div class="col-md-4 p-3">
                         <a class="card" href="/courses/{{this.slug}}">
-                            <img src="{{this.image}}" class="card-img-top" width="100%">
+                            <img src="{{this.image}}" alt="{{this.name}}" class="card-img-top" width="100%">
                             <div class="card-body text-center">
                                 <p class="card-title">{{this.name}}
-                                    <img src="{{this.icon}}" width="50px">
+                                    <img src="{{this.icon}}" alt="grade" width="50px">
                                 </p>
                             </div>
                         </a>

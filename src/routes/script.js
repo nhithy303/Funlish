@@ -1,31 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="stats-container">
-        <div id="moves-count"></div>
-        <div id="time"></div>
-      </div>
-       <div class="controls-container">
-      <p id="result"></p>
-      <button id="start" style="margin-bottom: 5%;">Start Game</button>
-    </div>
-      <div class="game-container"></div>
-      <button id="stop" class="hide" >Stop Game</button>
-    </div>
-  </body>
-</html>
-<!-- Script -->
-<script>
 const moves = document.getElementById("moves-count");
 const timeValue = document.getElementById("time");
 const startButton = document.getElementById("start");
@@ -37,6 +9,7 @@ let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
+
 //Items array
 const items = [
   { name: "bee", image: "bee.png" },
@@ -114,7 +87,7 @@ const matrixGenerator = (cardValues, size = 4) => {
      <div class="card-container" data-card-value="${cardValues[i].name}">
         <div class="card-before">?</div>
         <div class="card-after">
-        <img src="./bee.png"/></div>
+        <img src="${cardValues[i].image}" class="image"/></div>
      </div>
      `;
   }
@@ -126,7 +99,7 @@ const matrixGenerator = (cardValues, size = 4) => {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       //If selected card is not matched yet then only run (i.e already matched card when clicked would be ignored)
-      if (!card.classList.contains("matched") && !card.classList.contains("flipped")) {
+      if (!card.classList.contains("matched")) {
         //flip the cliked card
         card.classList.add("flipped");
         //if it is the firstcard (!firstCard since firstCard is initially false)
@@ -207,4 +180,3 @@ const initializer = () => {
   console.log(cardValues);
   matrixGenerator(cardValues);
 };
-    </script>

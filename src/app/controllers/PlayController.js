@@ -13,12 +13,22 @@ class PlayController {
 
     // [GET] /play/matching-game
     matchingGame(req, res, next) {
-        // res.render('user/play/matching-game', {
-        //     user: req.session.username,
-        // });
-        MatchingGame.findOne({ topic: 'animal' })
-            .then(matchinggame =>
+        MatchingGame.find({})
+            .then(matchinggames =>
                 res.render('user/play/matching-game', {
+                    title: "Matching Game |",
+                    user: req.session.username,
+                    matchinggames: multipleMongooseToObject(matchinggames),
+                }),
+            )
+            .catch(next);
+    }
+
+    // [GET] /play/matching-game/:slug
+    matchingGamePlay(req, res, next) {
+        MatchingGame.findOne({ topic: req.params.slug })
+            .then(matchinggame =>
+                res.render('user/play/matching-game-play', {
                     title: "Matching Game |",
                     user: req.session.username,
                     matchinggame: mongooseToObject(matchinggame),

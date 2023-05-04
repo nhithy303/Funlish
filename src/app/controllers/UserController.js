@@ -59,10 +59,15 @@ class UserController {
                     const account = new Account();
                     account.username = req.body.username;
                     account.password = req.body.password;
+                    req.session.username = account.username;
                     
                     const user = new User();
                     user.username = account.username;
-                    req.session.username = account.username;
+                    // Character.findOne({ name: "default" })
+                    //     .then(character => {
+                    //         user.avatar = character.image;
+                    //     })
+                    //     .catch(next);
 
                     Promise.all([user.save(), account.save()])
                         .then(() => res.redirect('/profile'))

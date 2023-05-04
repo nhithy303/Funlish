@@ -463,18 +463,10 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 
 
 /* Matching Game */
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-} */
 .wrapper {
   box-sizing: content-box;
   width: 26.87em;
   padding: 2.5em 3em;
-  margin-top: 26%;
-  margin-bottom: -9%;
   background-color: #ffffff;
   position:relative;
   transform: translate(-50%, -50%);
@@ -541,24 +533,21 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   top: 0;
   margin-top: 0%;
 }
-button {
-  border: none;
-  border-radius: 0.3em;
-  padding: 1em 1.5em;
-  cursor: pointer;
-  background-color: #f4c531;
+.btn-yellow, .btn-yellow:hover {
+  background-color: #F4C531;
+  color: black;
+  padding: 0.5em 1.5em;
 }
-#stop {
-  font-size: 1.1em;
-  display: block;
-  margin: 1.1em auto 0 auto;
-  background-color: #000000;
-  color: #ffffff;
+.btn-black, .btn-black:hover {
+  background-color: black;
+  color: white;
+  padding: 0.5em 1.5em;
+  margin-top: 1.1em;
 }
-.controls-container button {
+/* .controls-container .btn-yellow {
   font-size: 1.3em;
   box-shadow: 0 0.6em 2em rgba(86, 66, 0, 0.2);
-}
+} */
 .hide {
   display: none;
   visibility: hidden;

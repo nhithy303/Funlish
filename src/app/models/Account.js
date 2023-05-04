@@ -16,7 +16,6 @@ const Account = new Schema(
     //     timestamps: true,
     // },
 );
-// Signin.index({ first: 1, last: -1 });
 
 // Hash password before save into database
 Account.pre("save", function (next) {

@@ -21,9 +21,16 @@ class UserController {
     psignin(req, res, next) {
         Account.findOne({ username: req.body.username })
             .then(account => {
-                if (account && req.body.password === account.password) {
-                    req.session.username = account.username;
-                    res.redirect('/profile');
+                if (account) {
+                    account.validatePassword(req.body.password, (err, match) => {
+                        if (match) {
+                            req.session.username = account.username;
+                            res.redirect('/profile');
+                        }
+                        else {
+                            res.redirect('back');
+                        }
+                    });
                 }
                 else {
                     res.redirect('back');
@@ -52,9 +59,11 @@ class UserController {
                     const account = new Account();
                     account.username = req.body.username;
                     account.password = req.body.password;
+                    
                     const user = new User();
                     user.username = account.username;
                     req.session.username = account.username;
+
                     Promise.all([user.save(), account.save()])
                         .then(() => res.redirect('/profile'))
                         .catch(next => res.send(next));

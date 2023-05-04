@@ -6,7 +6,7 @@
         <div class="col-md-6 text-center">
             <div class="floating-border">
                 <h3 class="text-bold">Customize your character!</h3>
-                <img src="" width="70%" id="character"><br>
+                <img src="{{user.avatar}}" width="70%" id="character"><br>
                 {{#each characters}}
                     <button class="btn btn-character" onclick="changeCharacter('{{this.image}}')">
                         <img src="{{this.image}}">

@@ -7,7 +7,7 @@ const User = new Schema(
     {
         username: { type: String, unique: true },
         name: { type: String, default: '' },
-        avatar: { type: String, default: 'https://cdn.pixabay.com/animation/2022/07/30/22/02/22-02-02-999_640.png' },
+        avatar: { type: String, default: 'https://drive.google.com/uc?export=view&id=1wGcR2ACFUCjJyib9CWt_UmXzn5tFjTFN' },
         birthday: { type: Date, default: Date.now },
         email: { type: String, default: '' },
         phone: { type: String, default: '' },

@@ -1,17 +1,17 @@
-<div class="fixed-bottom up">
+<div class="fixed-bottom back-to-top">
     <a href="#top">
-        <img src="/images/up.png" alt="up" style="width: 50px;">
+        <img src="/images/up.png" alt="back to top" style="width: 50px;">
     </a>
 </div>
 
 <script>
-    var backToTop = document.querySelector(".up");
+    var backToTop = document.querySelector(".back-to-top");
     window.addEventListener("scroll", () => {
         if (!window.scrollY) {
-            backToTop.style.display = "none";
+            backToTop.style.opacity = "0";
         }
         else {
-            backToTop.style.display = "block";
+            backToTop.style.opacity = "1";
         }
     });
 </script>

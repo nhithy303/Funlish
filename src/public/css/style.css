@@ -3,12 +3,16 @@
   src: url("/font/UTM APTIMA.TTF") format("truetype"); }
 
 html * {
-  font-family: "Aptima";
-  /* cursor: url(/images/cursor-auto.png), auto; */
-  /* cursor: url(/images/cursor-pointer.png), pointer; */ }
+  font-family: "Aptima"; }
 
 body {
   cursor: url(/images/cursor-auto.png), auto; }
+
+a, .btn:hover {
+  cursor: url(/images/cursor-pointer.png), auto; }
+
+input {
+  cursor: url(/images/cursor-text.png), auto; }
 
 /* Layout */
 header {
@@ -165,10 +169,6 @@ hr.title {
 
 .navbar-toggler:focus {
   box-shadow: none; }
-
-a, button {
-  cursor: url(/images/cursor-pointer.png), auto;
-}
 
 a {
   text-decoration: none;
@@ -367,11 +367,12 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   right: 20px;
   left: auto; }
 
-.up {
-  display: none;
+.back-to-top {
+  opacity: 0;
   bottom: 20px;
   left: 20px;
-  right: auto; }
+  right: auto;
+  transition: opacity 0.3s; }
 
 [chat-title]:hover:after {
   visibility: visible;

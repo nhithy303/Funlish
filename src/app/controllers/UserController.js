@@ -69,7 +69,10 @@ class UserController {
     // [GET] /profile
     profile(req, res, next) {
         if (req.session.username) {
-            Promise.all([User.findOne({ username: req.session.username }), Character.find({})])
+            Promise.all([
+                User.findOne({ username: req.session.username }),
+                Character.find({ name: { $nin: ['default'] } })
+            ])
                 .then(([user, characters]) =>
                     res.render('user/profile', {
                         title: "Tài khoản |",

@@ -9,21 +9,20 @@ let cards;
 let interval;
 let firstCard = false;
 let secondCard = false;
-
 //Items array
 const items = [
-  { name: "bee", image: "bee.png" },
-  { name: "crocodile", image: "crocodile.png" },
-  { name: "macaw", image: "macaw.png" },
-  { name: "gorilla", image: "gorilla.png" },
-  { name: "tiger", image: "tiger.png" },
-  { name: "monkey", image: "monkey.png" },
-  { name: "chameleon", image: "chameleon.png" },
-  { name: "piranha", image: "piranha.png" },
-  { name: "anaconda", image: "anaconda.png" },
-  { name: "sloth", image: "sloth.png" },
-  { name: "cockatoo", image: "cockatoo.png" },
-  { name: "bear", image: "bear.png" },
+  { name: "bee", image: "/matching-game-images/bee.png" },
+  { name: "crocodile", image: "/matching-game-images/crocodile.png" },
+  { name: "macaw", image: "/matching-game-images/macaw.png" },
+  { name: "gorilla", image: "/matching-game-images/gorilla.png" },
+  { name: "tiger", image: "/matching-game-images/tiger.png" },
+  { name: "monkey", image: "/matching-game-images/monkey.png" },
+  { name: "chameleon", image: "/matching-game-images/chameleon.png" },
+  { name: "piranha", image: "/matching-game-images/piranha.png" },
+  { name: "anaconda", image: "/matching-game-images/anaconda.png" },
+  { name: "sloth", image: "/matching-game-images/sloth.png" },
+  { name: "cockatoo", image: "/matching-game-images/cockatoo.png" },
+  { name: "bear", image: "/matching-game-images/bear.png" },
 ];
 
 //Initial Time
@@ -87,7 +86,7 @@ const matrixGenerator = (cardValues, size = 4) => {
      <div class="card-container" data-card-value="${cardValues[i].name}">
         <div class="card-before">?</div>
         <div class="card-after">
-        <img src="${cardValues[i].image}" class="image"/></div>
+        <img src="${cardValues[i].image}"/></div>
      </div>
      `;
   }
@@ -99,7 +98,7 @@ const matrixGenerator = (cardValues, size = 4) => {
   cards.forEach((card) => {
     card.addEventListener("click", () => {
       //If selected card is not matched yet then only run (i.e already matched card when clicked would be ignored)
-      if (!card.classList.contains("matched")) {
+      if (!card.classList.contains("matched") && !card.classList.contains("flipped")) {
         //flip the cliked card
         card.classList.add("flipped");
         //if it is the firstcard (!firstCard since firstCard is initially false)

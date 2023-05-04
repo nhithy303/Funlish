@@ -10,19 +10,19 @@ let interval;
 let firstCard = false;
 let secondCard = false;
 //Items array
-const items = [
-  { name: "bee", image: "/matching-game-images/bee.png" },
-  { name: "crocodile", image: "/matching-game-images/crocodile.png" },
-  { name: "macaw", image: "/matching-game-images/macaw.png" },
-  { name: "gorilla", image: "/matching-game-images/gorilla.png" },
-  { name: "tiger", image: "/matching-game-images/tiger.png" },
-  { name: "monkey", image: "/matching-game-images/monkey.png" },
-  { name: "chameleon", image: "/matching-game-images/chameleon.png" },
-  { name: "piranha", image: "/matching-game-images/piranha.png" },
-  { name: "anaconda", image: "/matching-game-images/anaconda.png" },
-  { name: "sloth", image: "/matching-game-images/sloth.png" },
-  { name: "cockatoo", image: "/matching-game-images/cockatoo.png" },
-  { name: "bear", image: "/matching-game-images/bear.png" },
+let items = [ // display = 0:name / 1:image
+  { name: "bee", image: "/matching-game-images/bee.png", display: "" },
+  { name: "crocodile", image: "/matching-game-images/crocodile.png", display: "" },
+  { name: "macaw", image: "/matching-game-images/macaw.png", display: "" },
+  { name: "gorilla", image: "/matching-game-images/gorilla.png", display: "" },
+  { name: "tiger", image: "/matching-game-images/tiger.png", display: "" },
+  { name: "monkey", image: "/matching-game-images/monkey.png", display: "" },
+  { name: "chameleon", image: "/matching-game-images/chameleon.png", display: "" },
+  { name: "piranha", image: "/matching-game-images/piranha.png", display: "" },
+  { name: "anaconda", image: "/matching-game-images/anaconda.png", display: "" },
+  { name: "sloth", image: "/matching-game-images/sloth.png", display: "" },
+  { name: "cockatoo", image: "/matching-game-images/cockatoo.png", display: "" },
+  { name: "bear", image: "/matching-game-images/bear.png", display: "" },
 ];
 
 //Initial Time
@@ -72,7 +72,11 @@ const generateRandom = (size = 4) => {
 
 const matrixGenerator = (cardValues, size = 4) => {
   gameContainer.innerHTML = "";
-  cardValues = [...cardValues, ...cardValues];
+  // cardValues = [...cardValues, ...cardValues];
+  // one cardValues displaying name & another displaying image
+  cardValues = [
+    ...cardValues.map(card => { return { ...card, display: "word" } }),
+    ...cardValues.map(card => { return { ...card, display: "picture" } })];
   //simple shuffle
   cardValues.sort(() => Math.random() - 0.5);
   for (let i = 0; i < size * size; i++) {
@@ -82,11 +86,18 @@ const matrixGenerator = (cardValues, size = 4) => {
         after => back side (contains actual image);
         data-card-values is a custom attribute which stores the names of the cards to match later
       */
+    // Get picture or word
+    let cardContent = "";
+    cardValues[i].display == "picture"
+      ? cardContent = `<p>${cardValues[i].name}</p>`
+      : cardContent = `<img src="${cardValues[i].image}"/>`;
+
     gameContainer.innerHTML += `
      <div class="card-container" data-card-value="${cardValues[i].name}">
         <div class="card-before">?</div>
         <div class="card-after">
-        <img src="${cardValues[i].image}"/></div>
+          ${cardContent}
+        </div>
      </div>
      `;
   }

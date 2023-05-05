@@ -16,7 +16,10 @@ input {
 
 /* Layout */
 header {
-  background-color: #FFF5DE; }
+  background-image: linear-gradient(
+    #FFF5DE 90%,
+    white
+  ); }
 
 .main {
   background-color: white; }
@@ -46,6 +49,32 @@ hr.title {
   border-radius: 10px;
   background-color: #850000; }
 
+.home-img {
+  background-image: url(/images/home-students.png), url(/images/home-school.png), url(/images/home-patterns.png);
+  background-position: 85%, 50%, 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 500px; }
+
+.home-text {
+  padding-top: 13em; }
+
+.home-text button {
+  margin-left: 9em; }
+
+@media screen and (max-width: 922px) {
+  .home-img {
+    background-position: 80%, 0%, 100%; }
+  .home-text {
+    padding-top: 0;
+    text-align: center; }
+  .home-text button {
+    margin-left: 0; } }
+
+@media screen and (max-width: 768px) {
+  .home-img {
+    height: 300px; } }
+
 /* Color */
 .color-topnav {
   background-color: #DC0000; }
@@ -71,6 +100,12 @@ hr.title {
 .color-main {
   background-color: #FFF5DE; }
 
+.color-main-grad {
+  background-image: linear-gradient(
+    white 5%,
+    #FFF5DE
+  ); }
+
 .text-color-course {
   color: #1995ED; }
 
@@ -85,7 +120,8 @@ hr.title {
 
 .btn:hover {
   filter: brightness(110%);
-  box-shadow: 0 0 3px 1px grey; }
+  box-shadow: 0 0 3px 1px grey;
+  color: black; }
 
 .btn-menu {
   padding: 0 10px; }
@@ -96,8 +132,7 @@ hr.title {
 .btn-img {
   width: 50px;
   padding-left: 5px;
-  padding-right: 5px;
-}
+  padding-right: 5px; }
 
 .btn-blue, .btn-blue:hover {
   background-color: #5186CD; }
@@ -147,12 +182,10 @@ hr.title {
   right: 0; }
 
 .btn-character {
-  border-radius: 30px;
-}
+  border-radius: 30px; }
 
 .btn-character img {
-  width: 50px;
-}
+  width: 50px; }
 
 /* Navigation bar */
 .nav-item {
@@ -175,7 +208,7 @@ a {
   color: black; }
 
 a:hover {
-  color: black; }
+  color: white; }
 
 .menu-bar ul li .active {
   text-decoration: underline; }
@@ -328,7 +361,7 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 .card-title {
   font-size: 20px; }
 
-.card img, .card-title {
+.card img, .card-title, .card a {
   transition: 0.3s; }
 
 .card:hover .card-img-top {
@@ -343,8 +376,17 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
 .card:hover .card-title img {
   filter: brightness(110%); }
 
+.card a {
+  display: none;
+  position: absolute;
+  top: -3em;
+  left: 5em; right: 5em; }
+
+.card:hover a {
+  display: block; }
+
 /* Media queries */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .corner-img, .corner-info {
     text-align: center; }
   .spacing-top {
@@ -357,7 +399,17 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   .carousel-item .col-md-4 {
     width: 33.33%; } }
 
-@media only screen and (max-width: 1200px) {
+@media screen and (max-width: 1350px) and (min-width: 992px) {
+  .card a {
+    left: 2em; right: 2em; } }
+
+@media screen and (max-width: 992px) {
+  .card a {
+    left: 7em; right: 7em;
+  }
+}
+
+@media screen and (max-width: 1200px) {
   input[type='text'], input[type='tel'], input[type='email'], input[type='date'], input[type='password'], select, textarea {
     width: 80%; } }
 

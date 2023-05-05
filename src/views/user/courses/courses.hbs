@@ -1,22 +1,23 @@
 <div class="main container-fluid">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-lg-9">
             <div class="row">
                 {{#each courses}}
-                    <div class="col-md-4 p-3">
-                        <a class="card" href="/courses/{{this.slug}}">
-                            <img src="{{this.image}}" alt="{{this.name}}" class="card-img-top" width="100%">
-                            <div class="card-body text-center">
+                    <div class="col-lg-4 p-3">
+                        <div class="card">
+                            <img src="{{this.image}}" alt="{{this.name}}" class="card-img-top w-100">
+                            <div class="card-body text-center" style="position: relative;">
+                                <a class="btn btn-blue" href="/courses/{{this.slug}}">Xem chi tiết</a>
                                 <p class="card-title">{{this.name}}
                                     <img src="{{this.icon}}" alt="grade" width="50px">
                                 </p>
                             </div>
-                        </a>
+                        </div>
                     </div>
                 {{/each}}
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-lg-3">
             <div class="floating-border">
                 <h2 class="text-center text-bold">Cảm nhận của phụ huynh về các khóa học của Funlish</h2>
                 <article>

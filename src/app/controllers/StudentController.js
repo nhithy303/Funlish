@@ -1,22 +1,22 @@
-const Account = require('../models/Account');
 const User = require('../models/User');
+const Student = require('../models/Student');
 const Character = require('../models/Character');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
-class MeController {
+class StudentController {
 
     // [GET] /profile
     profile(req, res, next) {
         if (req.session.username) {
             Promise.all([
-                User.findOne({ username: req.session.username }),
+                Student.findOne({ username: req.session.username }),
                 Character.find({ name: { $nin: ['default'] } })
             ])
-                .then(([user, characters]) =>
-                    res.render('user/me/profile', {
+                .then(([student, characters]) =>
+                    res.render('user/student/profile', {
                         title: "Tài khoản |",
                         active: "profile",
-                        user: mongooseToObject(user),
+                        student: mongooseToObject(student),
                         characters: multipleMongooseToObject(characters),
                     }),
                 )
@@ -29,7 +29,7 @@ class MeController {
 
     // [PUT] /profile/:username
     editAvatar(req, res, next) {
-        User.updateOne({ username: req.params.username }, { avatar: req.body.character })
+        Student.updateOne({ username: req.params.username }, { avatar: req.body.character })
             .then(() => {
                 res.redirect('back')
             })
@@ -39,9 +39,9 @@ class MeController {
     // [GET] /my-course
     mycourse(req, res, next) {
         if (req.session.username) {
-            res.render('user/me/my-course', {
+            res.render('user/student/my-course', {
                 title: "Khóa học của bé |",
-                user: req.session.username,
+                student: req.session.username,
                 active: "my-course",
             })
         }
@@ -53,9 +53,9 @@ class MeController {
     // [GET] /settings
     settings(req, res, next) {
         if (req.session.username) {
-            res.render('user/me/settings', {
+            res.render('user/student/settings', {
                 title: "Cài đặt |",
-                user: req.session.username,
+                student: req.session.username,
                 active: "settings",
             })
         }
@@ -66,4 +66,4 @@ class MeController {
     
 }
 
-module.exports = new MeController;
+module.exports = new StudentController;

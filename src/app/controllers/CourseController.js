@@ -9,7 +9,7 @@ class CourseController {
             .then(courses =>
                 res.render('user/courses/courses', {
                     title: "Khóa học |",
-                    user: req.session.username,
+                    student: req.session.username,
                     courses: multipleMongooseToObject(courses),
                 }),
             )
@@ -22,7 +22,7 @@ class CourseController {
             .then(([course, courses]) =>
                 res.render('user/courses/detail', {
                     title: `${course.name} |`,
-                    user: req.session.username,
+                    student: req.session.username,
                     course: mongooseToObject(course),
                     courses: multipleMongooseToObject(courses),
                     active: req.params.slug,

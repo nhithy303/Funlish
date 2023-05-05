@@ -6,7 +6,7 @@ const aboutRouter = require('./about');
 const contactRouter = require('./contact');
 const userRouter = require('./users');
 const adminRouter = require('./admin');
-const meRouter = require('./me');
+const studentRouter = require('./student');
 
 const route = (app) => {
 
@@ -18,7 +18,7 @@ const route = (app) => {
     app.use('/contact', contactRouter);
     app.use('/', userRouter);
     app.use('/admin', adminRouter);
-    app.use('/', meRouter);
+    app.use('/', studentRouter);
 
 }
 

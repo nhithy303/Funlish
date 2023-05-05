@@ -1,27 +1,54 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
 const User = new Schema(
     {
         username: { type: String, unique: true },
-        name: { type: String, default: '' },
-        avatar: { type: String, default: 'https://drive.google.com/uc?export=view&id=1wGcR2ACFUCjJyib9CWt_UmXzn5tFjTFN' },
-        birthday: { type: Date, default: Date.now },
-        email: { type: String, default: '' },
-        phone: { type: String, default: '' },
-        // status: { type: String, default: 'inactive'},
-        // type_regis: { type: String },
-        // action: { type: String, default: 'System' },
-
-        // deleteAt: { type: Date, default: Date.now },
+        password: { type: String },
+        singinAt: { type: Date, default: Date.now },
+        singoutAt: { type: Date, default: Date.now },
+        // action: { type: String },
     },
-    {
-        timestamps: true,
-    },
+    // {
+    //     timestamps: true,
+    // },
 );
-User.index({ username: 1 });
+
+// Hash password before save into database
+User.pre("save", function (next) {
+    if (this.isModified("password") || this.isNew) {
+        bcrypt.genSalt(10, (saltError, salt) => {
+            if (saltError) {
+                return next(err);
+            }
+            bcrypt.hash(this.password, salt, (hashError, hash) => {
+                if (hashError) {
+                    return next(hashError);
+                }
+                this.password = hash;
+                next();
+            });
+        });
+    }
+    else {
+        return next();
+    }
+});
+
+// Validate password
+User.methods.validatePassword = function (password, callback) {
+    bcrypt.compare(password, this.password, (err, match) => {
+        if (err) {
+            return callback(err);
+        }
+        else {
+            callback(null, match);
+        }
+    });
+}
 
 // Add plugins
 mongoose.plugin(slug);

@@ -5,5 +5,6 @@ const courseController = require('../app/controllers/CourseController');
 
 router.get('/', courseController.index);
 router.get('/:slug', courseController.detail);
+// router.post();
 
 module.exports = router;

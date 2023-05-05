@@ -7,7 +7,7 @@ class PlayController {
     index(req, res, next) {
         res.render('user/play/play', {
             title: "Chơi mà học |",
-            user: req.session.username,
+            student: req.session.username,
         });
     }
 
@@ -17,7 +17,7 @@ class PlayController {
             .then(matchinggames =>
                 res.render('user/play/matching-game', {
                     title: "Matching Game |",
-                    user: req.session.username,
+                    student: req.session.username,
                     matchinggames: multipleMongooseToObject(matchinggames),
                 }),
             )
@@ -30,7 +30,7 @@ class PlayController {
             .then(matchinggame =>
                 res.render('user/play/matching-game-play', {
                     title: "Matching Game |",
-                    user: req.session.username,
+                    student: req.session.username,
                     matchinggame: mongooseToObject(matchinggame),
                 }),
             )

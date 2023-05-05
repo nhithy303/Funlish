@@ -6,7 +6,7 @@
         <div class="col-md-6 text-center">
             <div class="floating-border">
                 <h3 class="text-bold">Customize your character!</h3>
-                <img src="{{user.avatar}}" width="70%" id="character"><br>
+                <img src="{{student.avatar}}" width="70%" id="character"><br>
                 {{#each characters}}
                     <button class="btn btn-character" onclick="changeCharacter('{{this.image}}')">
                         <img src="{{this.image}}">
@@ -18,12 +18,12 @@
         </div>
         <div class="col-md-4 text-center">
             <div class="floating-border">
-                <img src="{{user.avatar}}" width="50%">
-                <h1>{{user.username}}</h1>
-                <h2>{{user.name}}</h2>
-                <p>{{formatDate user.birthday}}</p>
-                <p>{{user.email}}</p>
-                <p>{{user.phone}}</p>
+                <img src="{{student.avatar}}" width="50%">
+                <h1>{{student.username}}</h1>
+                <h2>{{student.name}}</h2>
+                <p>{{formatDate student.birthday}}</p>
+                <p>{{student.email}}</p>
+                <p>{{student.phone}}</p>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
     const editAvatar = () => {
         var editAvatarForm = document.forms["edit-avatar-form"];
         document.forms["edit-avatar-form"]["character"].value = characterImage;
-        editAvatarForm.action = "/profile/" + "{{user.username}}" + "?_method=PUT";
+        editAvatarForm.action = "/profile/" + "{{student.username}}" + "?_method=PUT";
         editAvatarForm.submit();
     }
 </script>

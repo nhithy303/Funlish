@@ -7,7 +7,7 @@ class AboutController {
     index(req, res, next) {
         res.render('user/about', {
             title: "Về chúng tôi |",
-            user: req.session.username,
+            student: req.session.username,
         });
     }
     

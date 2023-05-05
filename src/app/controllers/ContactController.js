@@ -7,7 +7,7 @@ class ContactController {
     index(req, res, next) {
         res.render('user/contact', {
             title: "Liên hệ |",
-            user: req.session.username,
+            student: req.session.username,
         });
     }
     

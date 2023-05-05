@@ -7,7 +7,7 @@ class BlogController {
     index(req, res, next) {
         res.render('user/blog', {
             title: "Blog chia sẻ |",
-            user: req.session.username,
+            student: req.session.username,
         });
     }
     

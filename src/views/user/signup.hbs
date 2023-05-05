@@ -18,6 +18,7 @@
                 <button type="button" style="position: absolute;" class="btn btn-repassword" onclick="showHidePassword('repassword')">
                     <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-repassword">
                 </button><br>
+                <div id="error" style="display: none;">Tên đăng nhập đã tồn tại!</div>
                 <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Đăng ký">
             </form>
         </div>
@@ -56,8 +57,14 @@
             alert("Mật khẩu không trùng khớp!");
             e.preventDefault();
         }
-        else {
-            // alert("Đăng ký tài khoản thành công!");
-        }
+    }
+
+    // Show error line of failed signing up
+    const errorLog = document.getElementById("error");
+    if ({{failed}}) {
+        errorLog.style.display = "block";
+    }
+    else {
+        errorLog.style.display = "none";
     }
 </script>

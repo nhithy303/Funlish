@@ -4,7 +4,7 @@ const { engine } = require('express-handlebars');
 const route = require('./routes');
 const db = require('./config/db');
 const session = require('express-session');
-const hbsHelpers = require('./helpers/handlebars');
+const hbsHelpers = require('./util/handlebars');
 const methodOverride = require('method-override');
 
 // Connect to db

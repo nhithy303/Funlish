@@ -98,20 +98,22 @@
         cardValues.sort(() => Math.random() - 0.5);
         for (let i = 0; i < size * size; i++) {
             /*
-                Create Cards
-                before => front side (contains question mark)
-                after => back side (contains actual image);
-                data-card-values is a custom attribute which stores the names of the cards to match later
-                */
+            Create Cards
+            before => front side (contains question mark)
+            after => back side (contains actual image);
+            data-card-values is a custom attribute which stores the names of the cards to match later
+            */
             // Get picture or word
             let cardContent = "";
             cardValues[i].display == "picture"
                 ? cardContent = `<p>${cardValues[i].word}</p>`
-                : cardContent = `<img src="${cardValues[i].picture}" width="100%"/>`;
+                : cardContent = `<img src="${cardValues[i].picture}" class="w-100"/>`;
 
             gameContainer.innerHTML += `
                 <div class="card-container" data-card-value="${cardValues[i].word}">
-                    <div class="card-before">?</div>
+                    <div class="card-before">
+                        <img src="{{defaultcard.images.[0]}}" class="w-75">
+                    </div>
                     <div class="card-after">
                         ${cardContent}
                     </div>

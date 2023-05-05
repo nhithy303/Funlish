@@ -26,12 +26,13 @@ class PlayController {
 
     // [GET] /play/matching-game/:slug
     matchingGamePlay(req, res, next) {
-        MatchingGame.findOne({ topic: req.params.slug })
-            .then(matchinggame =>
+        Promise.all([MatchingGame.findOne({ topic: req.params.slug }), MatchingGame.findOne({ topic: 'default'})])
+            .then(([matchinggame, defaultcard]) =>
                 res.render('user/play/matching-game-play', {
                     title: "Matching Game |",
                     student: req.session.username,
                     matchinggame: mongooseToObject(matchinggame),
+                    defaultcard: mongooseToObject(defaultcard),
                 }),
             )
             .catch(next);

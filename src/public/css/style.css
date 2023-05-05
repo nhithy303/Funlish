@@ -274,6 +274,10 @@ footer .nav-link:hover, footer .nav-link:focus {
   color: white;
   font-size: 20px; }
 
+#error {
+  color: red;
+  margin-bottom: 15px; }
+
 .spacing-top {
   margin-top: 180px; }
 
@@ -382,12 +386,15 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   top: -3em;
   left: 5em; right: 5em; }
 
+.card:hover a {
+  display: block; }
+
 .play-site {
   background-image: url(/images/funlish-bgi.png);
   background-repeat: no-repeat;
   background-position: 0% 100%;
   background-size: contain;
-  height: 768px; }
+  height: 922px; }
 
 .play-card {
   display: inline-block;
@@ -429,6 +436,22 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
   filter: brightness(1.1) }
 
 /* Media queries */
+@media screen and (max-width: 1350px) and (min-width: 992px) {
+  .card a {
+    left: 2em; right: 2em; } }
+
+@media screen and (max-width: 1200px) {
+  input[type='text'], input[type='tel'], input[type='email'], input[type='date'], input[type='password'], select, textarea {
+    width: 80%; }
+  .play-site {
+    height: 768px; } }
+
+@media screen and (max-width: 992px) {
+  .card a {
+    left: 7em; right: 7em; }
+  .play-site {
+    height: 640px; } }
+
 @media screen and (max-width: 768px) {
   .corner-img, .corner-info {
     text-align: center; }
@@ -443,20 +466,6 @@ input[type='text'], input[type='tel'], input[type='email'], input[type='date'], 
     width: 33.33%; }
   .play-site {
     height: unset; } }
-
-@media screen and (max-width: 1350px) and (min-width: 992px) {
-  .card a {
-    left: 2em; right: 2em; } }
-
-@media screen and (max-width: 992px) {
-  .card a {
-    left: 7em; right: 7em;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  input[type='text'], input[type='tel'], input[type='email'], input[type='date'], input[type='password'], select, textarea {
-    width: 80%; } }
 
 /* Chatbox */
 .chat {

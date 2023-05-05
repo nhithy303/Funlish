@@ -28,12 +28,18 @@ class UserController {
                             res.redirect('/profile');
                         }
                         else {
-                            res.redirect('/signin');
+                            res.render('user/signin', {
+                                title: "Đăng nhập |",
+                                failed: true,
+                            });
                         }
                     });
                 }
                 else {
-                    res.redirect('/signin');
+                    res.render('user/signin', {
+                        title: "Đăng nhập |",
+                        failed: true,
+                    });
                 }
             })
             .catch(next);
@@ -74,7 +80,10 @@ class UserController {
                         .catch(next => res.send(next));
                 }
                 else {
-                    res.redirect('/signup');
+                    res.render('user/signup', {
+                        title: "Đăng ký |",
+                        failed: true,
+                    });
                 }
             })
             .catch(next);

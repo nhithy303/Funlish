@@ -11,9 +11,17 @@ const Student = new Schema(
         birthday: { type: Date, default: Date.now },
         email: { type: String, default: '' },
         phone: { type: String, default: '' },
-        // status: { type: String, default: 'inactive'},
-        // type_regis: { type: String },
-        // action: { type: String, default: 'System' },
+        courses: [{
+            courseId: { type: Schema.Types.ObjectId },
+            registeredDate: { type: Date, default: Date.now },
+            completedDate: { type: Date, default: Date.now },
+            progress: { type: Number }, // completed percentage
+            result: { type: Number }, // total score combined of all lessons
+            lessons: [{
+                lessonId: { type: Schema.Types.ObjectId },
+                score: { type: Number },
+            }],
+        }],
 
         // deleteAt: { type: Date, default: Date.now },
     },

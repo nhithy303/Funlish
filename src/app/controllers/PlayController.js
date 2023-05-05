@@ -13,7 +13,7 @@ class PlayController {
 
     // [GET] /play/matching-game
     matchingGame(req, res, next) {
-        MatchingGame.find({})
+        MatchingGame.find({ topic: { $nin: ['default'] } })
             .then(matchinggames =>
                 res.render('user/play/matching-game', {
                     title: "Matching Game |",

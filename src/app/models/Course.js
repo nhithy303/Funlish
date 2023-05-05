@@ -9,6 +9,8 @@ const Course = new Schema(
         image: { type: String },
         icon: { type: String },
         detail: { type: String },
+        lessons: [{ type: Schema.Types.ObjectId, ref: 'Lesson'}],
+        // students: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
         slug: { type: String, slug: 'name', unique: true },
     },
     {

@@ -5,12 +5,12 @@ const Schema = mongoose.Schema;
 
 const Lesson = new Schema(
     {
-        course_id: { type: Schema.Types.ObjectId },
+        order: { type: Number },
         name: { type: String },
-        image: { type: String },
-        icon: { type: String },
         description: { type: String },
-        detail: { type: String },
+        workbook: { type: String },
+        video: { type: String },
+        quiz: [{ type: Schema.Types.ObjectId, ref: 'Quiz'}],
         slug: { type: String, slug: 'name', unique: true },
     },
     {

@@ -39,11 +39,16 @@ class StudentController {
     // [GET] /my-course
     mycourse(req, res, next) {
         if (req.session.username) {
-            res.render('user/student/my-course', {
-                title: "Khóa học của bé |",
-                student: req.session.username,
-                active: "my-course",
-            })
+            Student.findOne({ username: req.session.username })
+                .then((student) => {
+                    res.render('user/student/my-course', {
+                        title: "Khóa học của bé |",
+                        // student: req.session.username,
+                        student: mongooseToObject(student),
+                        active: "my-course",
+                    })
+                })
+                .catch(next);
         }
         else {
             res.redirect('/signin');
@@ -64,6 +69,14 @@ class StudentController {
         }
     }
     
+    // [PUT] /:username/:courseId
+    registerCourse(req, res, next) {
+        Student.updateOne({ username: req.params.username }, { $push: { courses: { courseId: req.params.courseId } } })
+            .then(() => {
+                res.redirect('/my-course')
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new StudentController;

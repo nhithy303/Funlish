@@ -5,10 +5,10 @@ const Schema = mongoose.Schema;
 
 const Course = new Schema(
     {
-        name: { type: String },
-        image: { type: String },
-        icon: { type: String },
-        detail: { type: String },
+        name: { type: String, default: '' },
+        image: { type: String, default: '' },
+        icon: { type: String, default: '' },
+        detail: { type: String, default: '' },
         lessons: [{ type: Schema.Types.ObjectId, ref: 'Lesson'}],
         // students: [{ type: Schema.Types.ObjectId, ref: 'Student'}],
         slug: { type: String, slug: 'name', unique: true },

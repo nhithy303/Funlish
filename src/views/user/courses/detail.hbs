@@ -7,9 +7,7 @@
             <h2>{{course.name}}</h2>
             <img src="{{course.image}}" alt="{{course.name}}" class="w-100">
             <p>{{course.detail}}</p>
-            <a href="/my-course">
-                <button class="btn btn-red btn-mb20" onclick="">Đăng ký</button>
-            </a>
+            <button class="btn btn-red btn-mb20" onclick="registerCourse()">Đăng ký</button>
         </div>
         <div class="col-md-2">
             
@@ -17,6 +15,13 @@
     </div>
 </div>
 
+{{!-- Register course hidden form --}}
+<form method="POST" name="register-course-form"></form>
+
 <script>
-    
+    const registerCourse = () => {
+        var registerCourseForm = document.forms["register-course-form"];
+        registerCourseForm.action = "/{{student}}/{{course._id}}" + "?_method=PUT";
+        registerCourseForm.submit();
+    }
 </script>

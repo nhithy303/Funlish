@@ -15,11 +15,11 @@ const Student = new Schema(
             courseId: { type: Schema.Types.ObjectId },
             registeredDate: { type: Date, default: Date.now },
             completedDate: { type: Date, default: Date.now },
-            progress: { type: Number }, // completed percentage
-            result: { type: Number }, // total score combined of all lessons
+            progress: { type: Number, default: 0 }, // completed percentage - unit(%)
+            result: { type: Number, default: 0 }, // total score combined of all lessons
             lessons: [{
                 lessonId: { type: Schema.Types.ObjectId },
-                score: { type: Number },
+                score: { type: Number, default: 0 },
             }],
         }],
 

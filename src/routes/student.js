@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const StudentController = require('../app/controllers/StudentController');
+const studentController = require('../app/controllers/StudentController');
 
-router.get('/profile', StudentController.profile);
-router.put('/profile/:username', StudentController.editAvatar);
-router.get('/my-course', StudentController.mycourse);
-router.get('/settings', StudentController.settings);
+router.get('/profile', studentController.profile);
+router.put('/profile/:username', studentController.editAvatar);
+router.get('/my-course', studentController.mycourse);
+router.put('/:username/:courseId', studentController.registerCourse);
+router.get('/settings', studentController.settings);
 
 module.exports = router;

@@ -5,6 +5,9 @@
         </div>
         <div class="col-md-10 text-center">
             <h1>Khóa học của bé</h1>
+            {{#each student.courses}}
+                <h2>{{this.courseId}}</h2>
+            {{/each}}
         </div>
         {{!-- <div class="col-md-6 text-center">
             <p>[Content]</p>

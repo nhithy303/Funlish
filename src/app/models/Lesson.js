@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 const Lesson = new Schema(
     {
         order: { type: Number },
-        name: { type: String },
-        description: { type: String },
-        workbook: { type: String },
-        video: { type: String },
+        name: { type: String, default: '' },
+        description: { type: String, default: '' },
+        workbook: { type: String, default: '' },
+        video: { type: String, default: '' },
         quiz: [{ type: Schema.Types.ObjectId, ref: 'Quiz'}],
         slug: { type: String, slug: 'name', unique: true },
     },

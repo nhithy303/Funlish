@@ -5,11 +5,12 @@ const Schema = mongoose.Schema;
 
 const Quiz = new Schema(
     {
-        question: { type: String },
+        order: { type: Number },
+        question: { type: String, default: '' },
         answer: { type: Number },
         option: [{
             order: { type: Number },
-            content: { type: String },
+            content: { type: String, default: '' },
         }],
     },
     {

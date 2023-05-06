@@ -33,6 +33,9 @@ app.engine('hbs', engine({
     defaultLayout: 'user',
     helpers: {
         formatDate: hbsHelpers.formatDate,
+        formatDateTime: hbsHelpers.formatDateTime,
+        increaseIndex: hbsHelpers.increaseIndex,
+        getFullName: hbsHelpers.getFullName,
     },
 }));
 app.set('view engine', 'hbs');

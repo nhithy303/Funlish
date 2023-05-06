@@ -1,0 +1,90 @@
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-lg-2 text-center">
+            {{> profile-navbar active=active}}
+        </div>
+        <div class="col-lg-6 text-center">
+            <div class="floating-border color-main">
+                <h3 class="text-bold">Chọn nhân vật yêu thích của mình nào!</h3>
+                <div id="background" class="avatar big-avatar" style="background-image: url({{student.avatar.background}});">
+                    <img id="character" src="{{student.avatar.character}}">
+                </div>
+                <div class="tab-custom-avatar">
+                    <ul class="nav nav-tabs" id="avatar-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="character-tab" data-bs-toggle="tab" data-bs-target="#character-tab-item" type="button" role="tab" aria-controls="character" aria-selected="true">Nhân vật</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="background-tab" data-bs-toggle="tab" data-bs-target="#background-tab-item" type="button" role="tab" aria-controls="background" aria-selected="false">Ảnh nền</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="avatar-tab-content">
+                        <div class="tab-pane fade show active" id="character-tab-item" role="tabpanel" aria-labelledby="character-tab">
+                            <div class="container-fluid row mt-2">
+                                {{#each characters}}
+                                    <div class="col-2 mb-2">
+                                        <button class="btn btn-character" onclick="changeCharacter('{{this.image}}')">
+                                            <img src="{{this.image}}">
+                                        </button>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="background-tab-item" role="tabpanel" aria-labelledby="background-tab">
+                            <div class="container-fluid row mt-2">
+                                {{#each backgrounds}}
+                                    <div class="col-2 mb-2">
+                                        <button class="btn btn-background" onclick="changeBackground('{{this.image}}')">
+                                            <img src="{{this.image}}">
+                                        </button>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="button" class="btn btn-red" onclick="editAvatar()">Lưu thay đổi</button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="floating-border color-profile text-center">
+                <div class="avatar small-avatar" style="background-image: url({{student.avatar.background}});">
+                    <img src="{{student.avatar.character}}">
+                </div>
+                {{#if student.firstname}}
+                    <h4 class="text-bold">Xin chào, {{student.firstname}}!</h4>
+                {{else}}
+                    <h4 class="text-bold">Xin chào, {{student.username}}!</h4>
+                {{/if}}
+                <a class="btn btn-blue" href="/settings">Cập nhật thông tin</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- Edit avatar hidden form --}}
+<form method="POST" name="edit-avatar-form">
+    <input type="hidden" name="character">
+    <input type="hidden" name="background">
+</form>
+
+<script>
+    var characterImage;
+    var backgroundImage;
+    const changeCharacter = (image) => {
+        document.getElementById("character").setAttribute("src", image);
+        characterImage = image;
+    }
+    const changeBackground = (image) => {
+        document.getElementById("background").style.backgroundImage = `url(${image})`;
+        backgroundImage = image;
+    }
+    const editAvatar = () => {
+        var editAvatarForm = document.forms["edit-avatar-form"];
+        document.forms["edit-avatar-form"]["character"].value = characterImage;
+        document.forms["edit-avatar-form"]["background"].value = backgroundImage;
+        editAvatarForm.action = "/avatar/{{student._id}}" + "?_method=PUT";
+        editAvatarForm.submit();
+    }
+</script>

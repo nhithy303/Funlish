@@ -4,18 +4,65 @@
             {{> profile-navbar}}
         </div>
         <div class="col-md-10 text-center">
-            <h1>Cài đặt</h1>
+            <div class="tab-settings">
+                <ul class="nav nav-tabs" id="settings-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info-tab-item" type="button" role="tab" aria-controls="info" aria-selected="true">Thông tin cá nhân</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-tab-item" type="button" role="tab" aria-controls="password" aria-selected="false">Đổi mật khẩu</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="settings-tab-content">
+                    <div class="tab-pane fade show active" id="info-tab-item" role="tabpanel" aria-labelledby="info-tab">
+                        Update information
+                    </div>
+                    <div class="tab-pane fade" id="password-tab-item" role="tabpanel" aria-labelledby="password-tab">
+                        <form method="POST" action="" name="change-password-form" onsubmit="return validateForm(event)">
+                            <input type="password" id="current-password" name="current-password" placeholder="Mật khẩu hiện tại">
+                            <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('current-password')">
+                                <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-current-password">
+                            </button><br>
+                            <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu mới" style="position: relative;">
+                            <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('new-password')">
+                                <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-new-password">
+                            </button><br>
+                            <input type="password" id="re-password" name="re-password" placeholder="Xác nhận mật khẩu" style="position: relative;">
+                            <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('re-password')">
+                                <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-re-password">
+                            </button><br>
+                            <div id="error" style="display: none;">Mật khẩu hiện tại không chính xác!</div>
+                            <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Cập nhật">
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        {{!-- <div class="col-md-6 text-center">
-            <p>[Content]</p>
-        </div>
-        <div class="col-md-4 text-center">
-            <img src="{{user.avatar}}" width="100%">
-            <h1>{{user.username}}</h1>
-            <h2>{{user.name}}</h2>
-            <p>{{formatDate user.birthday}}</p>
-            <p>{{user.email}}</p>
-            <p>{{user.phone}}</p>
-        </div> --}}
     </div>
 </div>
+
+<script src="/script/showHidePassword.js"></script>
+<script>
+    const validateForm = (e) => {
+        const currentPassword = document.forms["change-password-form"]["current-password"].value;
+        const newPassword = document.forms["change-password-form"]["new-password"].value;
+        const rePassword = document.forms["change-password-form"]["re-password"].value;
+        if (currentPassword === "" || newPassword === "" || rePassword === "") {
+            alert("Thông tin mật khẩu còn trống!");
+            e.preventDefault();
+        }
+        else if (password !== repassword) {
+            alert("Mật khẩu không trùng khớp!");
+            e.preventDefault();
+        }
+    }
+
+    // Show error line of failed signing up
+    const errorLog = document.getElementById("error");
+    if ({{failed}}) {
+        errorLog.style.display = "block";
+    }
+    else {
+        errorLog.style.display = "none";
+    }
+</script>

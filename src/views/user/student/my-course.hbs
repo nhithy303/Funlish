@@ -4,11 +4,37 @@
             {{> profile-navbar}}
         </div>
         <div class="col-md-10 text-center">
-            <h1>Khóa học của bé</h1>
-            {{#each student.courses}}
-                <h2>{{this.courseId}}</h2>
-            {{/each}}
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Result</th>
+                    <th scope="col">Registered at</th>
+                    <th scope="col"></th>
+                    {{!-- <th scope="col">Handle</th> --}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each student.courses}}
+                        <tr>
+                            <th scope="row">{{increaseIndex @index}}</th>
+                            <td>{{this.courseName}}</td>
+                            <td>{{this.progress}}</td>
+                            <td>{{this.result}}</td>
+                            <td>{{formatDateTime this.registeredDate}}</td>
+                            <td>
+                                <a class="btn btn-blue" href="/courses/learn/{{this.courseId}}">Tiếp tục học</a>
+                            </td>
+                        </tr>
+                    {{else}}
+                    <h2>Bạn chưa đăng ký khóa học nào!</h2>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
+
         {{!-- <div class="col-md-6 text-center">
             <p>[Content]</p>
         </div>

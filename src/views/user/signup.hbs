@@ -15,7 +15,7 @@
                     <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-password">
                 </button><br>
                 <input type="password" id="repassword" name="repassword" placeholder="Xác nhận mật khẩu" style="position: relative;">
-                <button type="button" style="position: absolute;" class="btn btn-repassword" onclick="showHidePassword('repassword')">
+                <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('repassword')">
                     <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-repassword">
                 </button><br>
                 <div id="error" style="display: none;">Tên đăng nhập đã tồn tại!</div>
@@ -30,21 +30,8 @@
     </div>
 </div>
 
+<script src="/script/showHidePassword.js"></script>
 <script>
-    const showHidePassword = (id) => {
-        var password = document.getElementById(id);
-        var icon = document.getElementById(`icon-${id}`);
-        if (password.type === "text") {
-            password.type = "password";
-            icon.src = "/images/show-password.png";
-            icon.alt = "show password";
-        }
-        else {
-            password.type = "text";
-            icon.src = "/images/hide-password.png";
-            icon.alt = "hide password";
-        }
-    }
     const validateForm = (e) => {
         const username = document.forms["signup-form"]["username"].value;
         const password = document.forms["signup-form"]["password"].value;

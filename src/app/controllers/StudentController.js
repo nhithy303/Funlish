@@ -1,23 +1,26 @@
 const User = require('../models/User');
 const Student = require('../models/Student');
 const Character = require('../models/Character');
+const Background = require('../models/Background');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class StudentController {
 
-    // [GET] /profile
-    profile(req, res, next) {
+    // [GET] /dashboard
+    dashboard(req, res, next) {
         if (req.session.username) {
             Promise.all([
                 Student.findOne({ username: req.session.username }),
-                Character.find({ name: { $nin: ['default'] } })
+                Character.find({ name: { $nin: ['default'] } }),
+                Background.find({ name: { $nin: ['default'] } }),
             ])
-                .then(([student, characters]) =>
-                    res.render('user/student/profile', {
+                .then(([student, characters, backgrounds]) =>
+                    res.render('user/student/dashboard', {
                         title: "Tài khoản |",
-                        active: "profile",
+                        active: "dashboard",
                         student: mongooseToObject(student),
                         characters: multipleMongooseToObject(characters),
+                        backgrounds: multipleMongooseToObject(backgrounds),
                     }),
                 )
                 .catch(next);
@@ -27,9 +30,12 @@ class StudentController {
         }
     }
 
-    // [PUT] /profile/:username
+    // [PUT] /avatar/:id
     editAvatar(req, res, next) {
-        Student.updateOne({ username: req.params.username }, { avatar: req.body.character })
+        Student.updateOne({ _id: req.params.id }, {
+            'avatar.character': req.body.character,
+            'avatar.background': req.body.background,
+        })
             .then(() => {
                 res.redirect('back')
             })
@@ -43,7 +49,6 @@ class StudentController {
                 .then((student) => {
                     res.render('user/student/my-course', {
                         title: "Khóa học của bé |",
-                        // student: req.session.username,
                         student: mongooseToObject(student),
                         active: "my-course",
                     })
@@ -69,14 +74,38 @@ class StudentController {
         }
     }
     
-    // [PUT] /:username/:courseId
+    // [PUT] /register-course/:username
     registerCourse(req, res, next) {
-        Student.updateOne({ username: req.params.username }, { $push: { courses: { courseId: req.params.courseId } } })
-            .then(() => {
-                res.redirect('/my-course')
+        Student.findOne({ username: req.params.username, 'courses.courseId': req.body.courseId })
+            .then((registeredCourse) => {
+                if (!registeredCourse) {
+                    Student.updateOne({ username: req.params.username },
+                        { $push: { courses: {
+                            courseId: req.body.courseId,
+                            courseName: req.body.courseName,
+                        } } })
+                        .then(() => {
+                            res.redirect('/my-course')
+                        })
+                        .catch(next);
+                }
+                else {
+                    res.redirect('back');
+                }
             })
             .catch(next);
+
+        // Student.updateOne({ username: req.params.username },
+        //     { $push: { courses: {
+        //         courseId: req.body.courseId,
+        //         courseName: req.body.courseName,
+        //     } } })
+        //     .then(() => {
+        //         res.redirect('/my-course')
+        //     })
+        //     .catch(next);
     }
+    
 }
 
 module.exports = new StudentController;

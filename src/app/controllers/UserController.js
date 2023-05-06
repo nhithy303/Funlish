@@ -1,6 +1,5 @@
 const User = require('../models/User');
 const Student = require('../models/Student');
-const Character = require('../models/Character');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class UserController {
@@ -13,7 +12,7 @@ class UserController {
             });
         }
         else {
-            res.redirect('/profile');
+            res.redirect('/dashboard');
         }
     }
 
@@ -25,7 +24,7 @@ class UserController {
                     user.validatePassword(req.body.password, (err, match) => {
                         if (match) {
                             req.session.username = user.username;
-                            res.redirect('/profile');
+                            res.redirect('/dashboard');
                         }
                         else {
                             res.render('user/signin', {
@@ -53,7 +52,7 @@ class UserController {
             });
         }
         else {
-            res.redirect('/profile');
+            res.redirect('/dashboard');
         }
     }
 
@@ -62,22 +61,19 @@ class UserController {
         User.findOne({ username: req.body.username })
             .then(existedUser => {
                 if (!existedUser) {
-                    const newUser = new User();
-                    newUser.username = req.body.username;
-                    newUser.password = req.body.password;
+                    const newUser = new User({
+                        username: req.body.username,
+                        password: req.body.password,
+                    });
                     req.session.username = newUser.username;
                     
-                    const student = new Student();
-                    student.username = newUser.username;
-                    Character.findOne({ name: "default" })
-                        .then(character => {
-                            student.avatar = character.image;
-                        })
-                        .catch(next);
+                    const student = new Student({
+                        username: newUser.username,
+                    });
 
                     Promise.all([student.save(), newUser.save()])
-                        .then(() => res.redirect('/profile'))
-                        .catch(next => res.send(next));
+                        .then(() => res.redirect('/dashboard'))
+                        .catch(next);
                 }
                 else {
                     res.render('user/signup', {

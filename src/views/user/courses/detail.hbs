@@ -16,12 +16,22 @@
 </div>
 
 {{!-- Register course hidden form --}}
-<form method="POST" name="register-course-form"></form>
+<form method="POST" name="register-course-form">
+    <input type="hidden" name="courseId">
+    <input type="hidden" name="courseName">
+</form>
 
 <script>
     const registerCourse = () => {
-        var registerCourseForm = document.forms["register-course-form"];
-        registerCourseForm.action = "/{{student}}/{{course._id}}" + "?_method=PUT";
-        registerCourseForm.submit();
+        if ("{{student}}" !== "") {
+            var registerCourseForm = document.forms["register-course-form"];
+            document.forms["register-course-form"]["courseId"].value = "{{course._id}}";
+            document.forms["register-course-form"]["courseName"].value = "{{course.name}}";
+            registerCourseForm.action = "/register-course/{{student}}" + "?_method=PUT";
+            registerCourseForm.submit();
+        }
+        else {
+            alert("Bạn chưa đăng nhập!");
+        }
     }
 </script>

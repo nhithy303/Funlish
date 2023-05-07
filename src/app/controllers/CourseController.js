@@ -103,6 +103,7 @@ class CourseController {
             description: req.body.description,
             workbook: req.body.workbook,
             video: req.body.video,
+            image: req.body.image,
             slug: generateSlug(req.body.name),
         });
         lesson.save()

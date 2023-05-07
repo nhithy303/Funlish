@@ -56,7 +56,7 @@ class PlayController {
                     picture: req.body.picture,
                 } }
             })
-            .then(() => res.redirect('/admin/play'))
+            .then(() => res.redirect(`/admin/play/matching-game/cards/${req.params.topic}`))
             .catch(next);
     }
 

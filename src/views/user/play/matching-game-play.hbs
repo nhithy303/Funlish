@@ -62,13 +62,13 @@
         //format time before displaying
         let secondsValue = seconds < 10 ? `0${seconds}` : seconds;
         let minutesValue = minutes < 10 ? `0${minutes}` : minutes;
-        timeValue.innerHTML = `<span>Time:</span>${minutesValue}:${secondsValue}`;
+        timeValue.innerHTML = `<span>Thời gian: </span>${minutesValue}:${secondsValue}`;
     };
 
     //For calculating moves
     const movesCounter = () => {
         movesCount += 1;
-        moves.innerHTML = `<span>Moves:</span>${movesCount}`;
+        moves.innerHTML = `<span>Số lượt lật: </span>${movesCount}`;
     };
 
     //Pick random objects from the items array
@@ -155,8 +155,8 @@
                             //check if winCount ==half of cardValues
                             if (winCount == Math.floor(cardValues.length / 2)) {
                                 result.innerHTML = `
-                                    <h2>You Won</h2>
-                                    <h4>Moves: ${movesCount}</h4>
+                                    <h2>Chiến thắng!</h2>
+                                    <h4>Số lượt lật: ${movesCount}</h4>
                                 `;
                                 stopGame();
                             }
@@ -193,7 +193,7 @@
         //Start timer
         interval = setInterval(timeGenerator, 1000);
         //initial moves
-        moves.innerHTML = `<span>Moves:</span> ${movesCount}`;
+        moves.innerHTML = `<span>Số lượt lật: </span> ${movesCount}`;
         initializer();
     });
 

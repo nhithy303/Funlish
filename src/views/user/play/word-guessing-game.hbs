@@ -3,7 +3,10 @@
     <div id="user-input-section"></div>
     <div id="message"></div>
     <div id="letter-container"></div>
-    <button id="exit">Thoát</button>
+    <form method="GET" action="/play">
+        <button type="submit" id="exit">Thoát</button>
+    </form>
+    
 </div>
 <div class="controls-container">
     <div id="result"></div>
@@ -111,7 +114,7 @@
         randomWord = words[generateRandomValue(words)];
         randomHint = options[randomWord];
         hintRef.innerHTML = `<div id="wordHint">
-  <span>Hint: </span> ${randomHint}</div>`;
+  <span>Từ tiếng Việt: </span> ${randomHint}</div>`;
         let displayItem = "";
         randomWord.split("").forEach((value) => {
             displayItem += '<span class="inputSpace">_ </span>';
@@ -162,8 +165,8 @@
                             winCount += 1;
                             //If winCount equals word length
                             if (winCount == charArray.length) {
-                                resultText.innerHTML = "You Won";
-                                startBtn.innerText = "Restart";
+                                resultText.innerHTML = "Chiến thắng";
+                                startBtn.innerText = "Chơi tiếp";
                                 //block all buttons
                                 blocker();
                             }
@@ -175,7 +178,7 @@
                     lossCount -= 1;
                     document.getElementById(
                         "chanceCount"
-                    ).innerText = `Chances Left: ${lossCount}`;
+                    ).innerText = `Cơ hội còn lại: ${lossCount}`;
                     message.innerText = `Incorrect Letter`;
                     message.style.color = "#ff0000";
                     if (lossCount == 0) {

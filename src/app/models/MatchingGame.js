@@ -9,10 +9,7 @@ const MatchingGame = new Schema(
             picture: { type: String },
             display: { type: String },
         }],
-    },
-    // {
-    //     timestamps: true,
-    // },
+    }
 );
 
 module.exports = mongoose.model('MatchingGame', MatchingGame);

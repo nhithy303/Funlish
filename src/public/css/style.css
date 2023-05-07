@@ -11,8 +11,7 @@ body {
   cursor: url(/images/cursor-auto.png), auto;
 }
 
-a,
-.btn:hover {
+a, .btn:hover {
   cursor: url(/images/cursor-pointer.png), auto;
 }
 

@@ -1,4 +1,5 @@
 const MatchingGame = require('../models/MatchingGame');
+const WordGuessingGame = require('../models/WordGuessingGame');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class PlayController {
@@ -36,6 +37,11 @@ class PlayController {
                 }),
             )
             .catch(next);
+    }
+
+    // [GET] /play/word-guessing-game
+    wordGuessingGame(req, res, next) {
+        res.render('user/play/word-guessing-game', { layout: 'game' });
     }
     
 }

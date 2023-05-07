@@ -8,5 +8,6 @@ router.put('/avatar/:id', studentController.editAvatar);
 router.get('/my-course', studentController.mycourse);
 router.put('/register-course/:username', studentController.registerCourse);
 router.get('/settings', studentController.settings);
+router.put('/info/:id', studentController.editInfo);
 
 module.exports = router;

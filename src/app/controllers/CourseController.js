@@ -1,6 +1,7 @@
 const Course = require('../models/Course');
-const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 const Lesson = require('../models/Lesson');
+const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
+const { generateSlug } = require('../../util/slug');
 
 class CourseController {
 
@@ -48,6 +49,49 @@ class CourseController {
         else {
             res.redirect('/signin');
         }
+    }
+
+    // [POST] /courses/create
+    createCourses(req, res, next) {
+        const course = new Course({
+            name: req.body.name,
+            image: req.body.image,
+            icon: req.body.icon,
+            description: req.body.description,
+            slug: generateSlug(req.body.name),
+        });
+        course.save()
+            .then(() => res.redirect('/admin/courses'))
+            .catch(next);
+    }
+
+    // [PUT] /courses/:id
+    updateCourses(req, res, next) {
+
+    }
+    
+    // [POST] /courses/:id/lessons/create
+    createLessons(req, res, next) {
+        const lesson = new Lesson({
+            courseId: req.params.id,
+            order: req.body.order,
+            name: req.body.name,
+            description: req.body.description,
+            workbook: req.body.workbook,
+            video: req.body.video,
+            slug: generateSlug(req.body.name),
+        });
+        lesson.save()
+            .then(() => {
+                Course.findById({ _id: lesson.courseId })
+                    .then(course => {
+                        course.lessons.push(lesson);
+                        course.save();
+                        res.redirect(`/admin/courses/update/${course._id}`)
+                    })
+                    .catch();
+            })
+            .catch(next);
     }
 }
 

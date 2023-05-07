@@ -27,8 +27,22 @@
     </div>
 </div>
 
-<script src="/script/showHidePassword.js"></script>
 <script>
+    const showHidePassword = (id) => {
+        let password = document.getElementById(id);
+        let icon = document.getElementById(`icon-${id}`);
+        if (password.type === "text") {
+            password.type = "password";
+            icon.src = "/images/show-password.png";
+            icon.alt = "show password";
+        }
+        else {
+            password.type = "text";
+            icon.src = "/images/hide-password.png";
+            icon.alt = "hide password";
+        }
+    }
+    
     const validateForm = (e) => {
         const username = document.forms["signin-form"]["username"].value;
         const password = document.forms["signin-form"]["password"].value;
@@ -40,7 +54,7 @@
 
     // Show error line of failed signing in
     const errorLog = document.getElementById("error");
-    if ({{failed}}) {
+    if ('{{failed}}' !== '') {
         errorLog.style.display = "block";
     }
     else {

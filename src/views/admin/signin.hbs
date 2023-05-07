@@ -1,0 +1,35 @@
+<div class="container-fluid text-center position-absolute top-50 start-50 translate-middle">
+    <form method="POST" action="/admin/signin" name="admin-signin-form" class="bg-light" onsubmit="return validateForm(event)">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Tên đăng nhập</label>
+            <input type="text" class="form-control ms-auto me-auto w-50 text-center" id="username" name="username" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
+            <input type="password" class="form-control ms-auto me-auto w-50 text-center" id="password" name="password">
+        </div>
+        <div id="error" class="text-danger" style="display: none; margin-bottom: 10px;">Tên đăng nhập hoặc mật khẩu không chính xác!</div>
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </form>
+</div>
+
+<script>
+    const validateForm = (e) => {
+        const adminSigninForm = document.forms["admin-signin-form"];
+        const username = adminSigninForm["username"].value;
+        const password = adminSigninForm["password"].value;
+        if (username === "" || password === "") {
+            alert("Thông tin tài khoản còn trống!");
+            e.preventDefault();
+        }
+    }
+
+    // Show error line of failed signing in
+    const errorLog = document.getElementById("error");
+    if ('{{failed}}' !== '') {
+        errorLog.style.display = "block";
+    }
+    else {
+        errorLog.style.display = "none";
+    }
+</script>

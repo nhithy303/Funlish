@@ -15,23 +15,45 @@
                 </ul>
                 <div class="tab-content" id="settings-tab-content">
                     <div class="tab-pane fade show active" id="info-tab-item" role="tabpanel" aria-labelledby="info-tab">
-                        Update information
+                        <form method="POST" action="/info/{{student._id}}?_method=PUT" name="update-student-info-form" onsubmit="return validateInfo(event)">
+                            <div class="row container-fluid">
+                                <div class="col-sm-6">
+                                    <label for="firstname">Tên:</label><br>
+                                    <input type="text" id="firstname" name="firstname" placeholder="Tên" value="{{student.firstname}}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="lastname">Họ:</label><br>
+                                    <input type="text" id="lastname" name="lastname" placeholder="Họ" value="{{student.lastname}}">
+                                </div>
+                            </div>
+                            <div class="row container-fluid">
+                                <div class="col-sm-6">
+                                    <label for="email">Địa chỉ email:</label><br>
+                                    <input type="email" id="email" name="email" placeholder="Địa chỉ email" value="{{student.email}}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label for="birthday">Ngày sinh:</label><br>
+                                    <input type="date" id="birthday" name="birthday" value="{{shortDate student.birthday}}">
+                                </div>
+                            </div>
+                            <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Cập nhật">
+                        </form>
                     </div>
                     <div class="tab-pane fade" id="password-tab-item" role="tabpanel" aria-labelledby="password-tab">
-                        <form method="POST" action="" name="change-password-form" onsubmit="return validateForm(event)">
-                            <input type="password" id="current-password" name="current-password" placeholder="Mật khẩu hiện tại">
+                        <form method="POST" action="/password/{{student.username}}?_method=PUT" name="change-password-form" onsubmit="return validateForm(event)">
+                            <input type="password" id="current-password" name="currentPassword" placeholder="Mật khẩu hiện tại">
                             <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('current-password')">
                                 <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-current-password">
                             </button><br>
-                            <input type="password" id="new-password" name="new-password" placeholder="Mật khẩu mới" style="position: relative;">
+                            <input type="password" id="new-password" name="newPassword" placeholder="Mật khẩu mới" style="position: relative;">
                             <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('new-password')">
                                 <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-new-password">
                             </button><br>
-                            <input type="password" id="re-password" name="re-password" placeholder="Xác nhận mật khẩu" style="position: relative;">
+                            <input type="password" id="re-password" name="rePassword" placeholder="Xác nhận mật khẩu" style="position: relative;">
                             <button type="button" style="position: absolute;" class="btn btn-password" onclick="showHidePassword('re-password')">
                                 <img src="/images/show-password.png" alt="show password" class="btn-img" id="icon-re-password">
                             </button><br>
-                            <div id="error" style="display: none;">Mật khẩu hiện tại không chính xác!</div>
+                            <div id="error1" style="display: none;">Mật khẩu hiện tại không chính xác!</div>
                             <input class="btn btn-red btn-160" style="margin-bottom: 20px;" type="submit" value="Cập nhật">
                         </form>
                     </div>
@@ -41,8 +63,22 @@
     </div>
 </div>
 
-<script src="/script/showHidePassword.js"></script>
 <script>
+    const showHidePassword = (id) => {
+        let password = document.getElementById(id);
+        let icon = document.getElementById(`icon-${id}`);
+        if (password.type === "text") {
+            password.type = "password";
+            icon.src = "/images/show-password.png";
+            icon.alt = "show password";
+        }
+        else {
+            password.type = "text";
+            icon.src = "/images/hide-password.png";
+            icon.alt = "hide password";
+        }
+    }
+
     const validateForm = (e) => {
         const currentPassword = document.forms["change-password-form"]["current-password"].value;
         const newPassword = document.forms["change-password-form"]["new-password"].value;
@@ -51,15 +87,32 @@
             alert("Thông tin mật khẩu còn trống!");
             e.preventDefault();
         }
-        else if (password !== repassword) {
+        else if (newPassword !== rePassword) {
             alert("Mật khẩu không trùng khớp!");
+            e.preventDefault();
+        }
+    }
+
+    const validateInfo = (e) => {
+        const updateInfoForm = document.forms["update-student-info-form"];
+        const email = updateInfoForm["email"].value;
+        const firstname = updateInfoForm["firstname"].value;
+        const lastname = updateInfoForm["lastname"].value;
+        const birthday = updateInfoForm["birthday"].value;
+        console.log(updateInfoForm["birthday"].value);
+        if (email === "" || firstname === "" || lastname === "" || birthday === "") {
+            alert("Thông tin còn trống!");
+            e.preventDefault();
+        }
+        else if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+            alert("Email không hợp lệ!");
             e.preventDefault();
         }
     }
 
     // Show error line of failed signing up
     const errorLog = document.getElementById("error");
-    if ({{failed}}) {
+    if ('{{failed}}' !== '') {
         errorLog.style.display = "block";
     }
     else {

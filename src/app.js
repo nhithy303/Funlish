@@ -36,6 +36,7 @@ app.engine('hbs', engine({
         formatDateTime: hbsHelpers.formatDateTime,
         increaseIndex: hbsHelpers.increaseIndex,
         getFullName: hbsHelpers.getFullName,
+        shortDate: hbsHelpers.shortDate,
     },
 }));
 app.set('view engine', 'hbs');

@@ -1,0 +1,36 @@
+<h2 class="text-center mt-2">Tạo mới khóa học</h2>
+<form method="POST" action="/courses/create" name="create-courses-form" onsubmit="return validateForm(event)">
+    <div class="mb-4">
+        <label for="name" class="form-label">Tên khóa học</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-4">
+        <label for="image" class="form-label">Hình ảnh</label>
+        <input type="text" class="form-control" id="image" name="image">
+    </div>
+    <div class="mb-4">
+        <label for="icon" class="form-label">Icon</label>
+        <input type="text" class="form-control" id="icon" name="icon">
+    </div>
+    <div class="mb-4">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <div class="mb-4 text-center">
+        <button type="submit" class="btn btn-primary">Tạo khóa học</button>
+    </div>
+</form>
+
+<script>
+    const validateForm = (e) => {
+        const createCoursesForm = document.forms["create-courses-form"];
+        const name = createCoursesForm["name"].value;
+        const image = createCoursesForm["image"].value;
+        const icon = createCoursesForm["icon"].value;
+        const description = createCoursesForm["description"].value;
+        if (name === "" || image === "" || icon === "" || description === "") {
+            alert("Thông tin khóa học còn trống!");
+            e.preventDefault();
+        }
+    }
+</script>

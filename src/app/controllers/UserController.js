@@ -91,6 +91,34 @@ class UserController {
         res.redirect('back');
     }
     
+    // [PUT] /password/:username
+    changePassword(req, res, next) {
+        User.findOne({ username: req.params.username })
+            .then(user => {
+                if (user) {
+                    user.validatePassword(req.body.currentPassword, (err, match) => {
+                        if (match) {
+                            user.password = req.body.newPassword;
+                            user.save()
+                                .then(() => res.redirect('/settings'))
+                                .catch(next);
+                        }
+                        else {
+                            res.render('user/student/settings', {
+                                title: "Cài đặt |",
+                                student: req.session.username,
+                                active: "settings",
+                                failed: true,
+                            });
+                        }
+                    });
+                }
+                else {
+                    res.redirect('/settings');
+                }
+            })
+            .catch(next);
+    }
 }
 
 module.exports = new UserController;

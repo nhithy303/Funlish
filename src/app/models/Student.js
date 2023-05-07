@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator');
 
 const Schema = mongoose.Schema;
 
@@ -35,8 +34,5 @@ const Student = new Schema(
     },
 );
 Student.index({ username: 1 });
-
-// Add plugins
-mongoose.plugin(slug);
 
 module.exports = mongoose.model('Student', Student);

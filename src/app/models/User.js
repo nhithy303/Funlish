@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
@@ -48,8 +47,5 @@ User.methods.validatePassword = function (password, callback) {
         }
     });
 }
-
-// Add plugins
-mongoose.plugin(slug);
 
 module.exports = mongoose.model('User', User);

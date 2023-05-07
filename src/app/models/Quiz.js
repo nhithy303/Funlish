@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-// const slug = require('mongoose-slug-generator');
 
 const Schema = mongoose.Schema;
 
 const Quiz = new Schema(
     {
+        lessonId: { type: Schema.Types.ObjectId, ref: 'Lesson' },
         order: { type: Number },
         question: { type: String, default: '' },
         answer: { type: Number },
@@ -17,8 +17,5 @@ const Quiz = new Schema(
         timestamps: true,
     },
 );
-
-// Add plugins
-// mongoose.plugin(slug);
 
 module.exports = mongoose.model('Quiz', Quiz);

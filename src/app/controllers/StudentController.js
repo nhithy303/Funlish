@@ -59,20 +59,6 @@ class StudentController {
             res.redirect('/signin');
         }
     }
-
-    // [GET] /settings
-    settings(req, res, next) {
-        if (req.session.username) {
-            res.render('user/student/settings', {
-                title: "Cài đặt |",
-                student: req.session.username,
-                active: "settings",
-            })
-        }
-        else {
-            res.redirect('/signin');
-        }
-    }
     
     // [PUT] /register-course/:username
     registerCourse(req, res, next) {
@@ -94,16 +80,38 @@ class StudentController {
                 }
             })
             .catch(next);
+    }
 
-        // Student.updateOne({ username: req.params.username },
-        //     { $push: { courses: {
-        //         courseId: req.body.courseId,
-        //         courseName: req.body.courseName,
-        //     } } })
-        //     .then(() => {
-        //         res.redirect('/my-course')
-        //     })
-        //     .catch(next);
+    // [GET] /settings
+    settings(req, res, next) {
+        if (req.session.username) {
+            Student.findOne({ username: req.session.username })
+                .then(student => {
+                    res.render('user/student/settings', {
+                        title: "Cài đặt |",
+                        student: mongooseToObject(student),
+                        active: "settings",
+                    })
+                })
+                .catch(next);
+        }
+        else {
+            res.redirect('/signin');
+        }
+    }
+
+    // [PUT] /info/:id
+    editInfo(req, res, next) {
+        Student.findById({ _id: req.params.id })
+            .then(student => {
+                student.email = req.body.email;
+                student.firstname = req.body.firstname;
+                student.lastname = req.body.lastname;
+                student.birthday = req.body.birthday;
+                student.save()
+                    .then(() => res.redirect('/settings'))
+                    .catch(next);
+            })
     }
     
 }

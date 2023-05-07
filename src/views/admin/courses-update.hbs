@@ -1,0 +1,66 @@
+<h2 class="text-center mt-2">Thông tin khóa học</h2>
+<form method="POST" action="" name="update-courses-form" onsubmit="return validateForm(event)">
+    <div class="mb-4">
+        <label for="name" class="form-label">Tên khóa học</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{course.name}}">
+    </div>
+    <div class="mb-4">
+        <label for="image" class="form-label">Hình ảnh</label>
+        <input type="text" class="form-control" id="image" name="image" value="{{course.image}}">
+    </div>
+    <div class="mb-4">
+        <label for="icon" class="form-label">Icon</label>
+        <input type="text" class="form-control" id="icon" name="icon" value="{{course.icon}}">
+    </div>
+    <div class="mb-4">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" name="description">{{course.description}}</textarea>
+    </div>
+    <div class="mb-4 text-center">
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+    </div>
+</form>
+<hr>
+<h2 class="text-center mt-2">Danh sách bài học
+    <a href="/admin/courses/{{course._id}}/lessons/create" class="btn btn-link">Tạo mới</a>
+</h2>
+<table class="table">
+    <thead>
+        <tr class="text-center">
+            <th scope="col">Thứ tự</th>
+            <th scope="col">Tên bài học</th>
+            <th scope="col">Ngày tạo</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each lessons}}
+            <tr>
+                <td class="text-center">{{this.order}}</th>
+                <td>{{this.name}}</td>
+                <td class="text-center">{{formatDate this.createdAt}}</td>
+                <td class="text-center">
+                    <a href="/courses/{{course.name}}/{{this.slug}}" class="btn btn-link">Xem</a>
+                    <a href="/admin/courses/{{course._id}}/lessons/{{this._id}}/update" class="btn btn-link">Sửa</a>
+                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+        {{else}}
+            <p class="text-center">Khóa học này chưa có bài học nào!</p>
+        {{/each}}
+    </tbody>
+</table>
+
+<script>
+    const validateForm = (e) => {
+        const updateCoursesForm = document.forms["update-courses-form"];
+        const name = updateCoursesForm["name"].value;
+        const image = updateCoursesForm["material"].value;
+        const icon = updateCoursesForm["icon"].value;
+        const description = updateCoursesForm["description"].value;
+        if (name === "" || image === "" || icon === "" || description === "") {
+            alert("Thông tin khóa học còn trống!");
+            e.preventDefault();
+        }
+    }
+</script>

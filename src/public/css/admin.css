@@ -1,0 +1,8 @@
+@font-face {
+  font-family: "Aptima";
+  src: url("/font/UTM APTIMA.TTF") format("truetype");
+}
+
+html * {
+  font-family: "Aptima";
+}

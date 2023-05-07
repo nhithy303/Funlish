@@ -1,0 +1,45 @@
+<h2 class="text-center mt-2">Tạo mới bài học</h2>
+<form method="POST" action="/courses/{{courseId}}/lessons/create" name="create-lessons-form" onsubmit="return validateForm(event)">
+    <div class="mb-4">
+        <label for="order" class="form-label">Thứ tự</label>
+        <input type="text" class="form-control" id="order" name="order">
+    </div>
+    <div class="mb-4">
+        <label for="name" class="form-label">Tên bài học</label>
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="mb-4">
+        <label for="workbook" class="form-label">Tài liệu</label>
+        <input type="text" class="form-control" id="workbook" name="workbook">
+    </div>
+    <div class="mb-4">
+        <label for="video" class="form-label">Video</label>
+        <input type="text" class="form-control" id="video" name="video">
+    </div>
+    <div class="mb-4">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea class="form-control" id="description" name="description"></textarea>
+    </div>
+    <div class="mb-4 text-center">
+        <button type="submit" class="btn btn-primary">Tạo mới</button>
+    </div>
+</form>
+
+<script>
+    const validateForm = (e) => {
+        const createLessonsForm = document.forms["create-lessons-form"];
+        const order = createLessonsForm["order"].value;
+        const name = createLessonsForm["name"].value;
+        const workbook = createLessonsForm["workbook"].value;
+        const video = createLessonsForm["video"].value;
+        const description = createLessonsForm["description"].value;
+        if (order === "" || name === "" || workbook === "" || video === "" || description === "") {
+            alert("Thông tin bài học còn trống!");
+            e.preventDefault();
+        }
+        else if (isNaN(order)) {
+            alert("Thứ tự bài học không hợp lệ!");
+            e.preventDefault();
+        }
+    }
+</script>

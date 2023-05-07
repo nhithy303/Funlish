@@ -11,4 +11,7 @@ module.exports = {
     getFullName: (firstname, lastname) => {
         return `${lastname} ${firstname}`;
     },
+    shortDate: (date) => {
+        return date.toLocaleDateString('fr-CA');
+    },
 };

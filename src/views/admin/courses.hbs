@@ -1,0 +1,30 @@
+<h2 class="text-center mt-2">
+    Danh sách khóa học
+    <a href="/admin/courses/create" class="btn btn-link">Tạo mới</a>
+</h2>
+<table class="table">
+    <thead>
+        <tr class="text-center">
+        <th scope="col"></th>
+        <th scope="col">Tên khóa học</th>
+        <th scope="col">Ngày tạo</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each courses}}
+            <tr>
+                <th scope="row" class="text-center">{{increaseIndex @index}}</th>
+                <td>{{this.name}}</td>
+                <td class="text-center">{{formatDate this.createdAt}}</td>
+                <td class="text-center">
+                    <a href="/courses/{{this.slug}}" class="btn btn-link">Xem</a>
+                    <a href="/admin/courses/update/{{this._id}}" class="btn btn-link">Sửa</a>
+                    <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Xóa</a>
+                </td>
+            </tr>
+        {{else}}
+        <h2>Funlish chưa có khóa học nào!</h2>
+        {{/each}}
+    </tbody>
+</table>

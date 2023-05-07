@@ -1,5 +1,6 @@
 const Course = require('../models/Course');
 const Lesson = require('../models/Lesson');
+const MatchingGame = require('../models/MatchingGame');
 const { multipleMongooseToObject, mongooseToObject } = require('../../util/mongoose');
 
 class AdminController {
@@ -113,9 +114,30 @@ class AdminController {
     // [GET] /admin/play
     play(req, res, next) {
         if (req.session.admin) {
-            res.render('admin/play', {
+            // res.render('admin/play', {
+            //     layout: 'admin',
+            // })
+            MatchingGame.find({ topic: { $nin: ['default'] } })
+                .then(matchinggames =>
+                    res.render('admin/play', {
+                        layout: 'admin',
+                        matchinggames: multipleMongooseToObject(matchinggames),
+                    })
+                )
+                .catch(next);
+        }
+        else {
+            res.redirect('/admin/signin');
+        }
+    }
+
+    // admin/play/matching-game/cards/:topic
+    addMatchingGameCards(req, res, next) {
+        if (req.session.admin) {
+            res.render('admin/matching-game-update', {
                 layout: 'admin',
-            })
+                topic: req.params.topic,
+            });
         }
         else {
             res.redirect('/admin/signin');

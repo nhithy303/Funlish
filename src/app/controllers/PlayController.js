@@ -39,6 +39,27 @@ class PlayController {
             .catch(next);
     }
 
+    // [POST] /play/matching-game/create
+    createMatchingGameTopic(req, res, next) {
+        const matchinggame = new MatchingGame(req.body);
+        matchinggame.save()
+            .then(() => res.redirect('/admin/play'))
+            .catch(next);
+    }
+
+    // [PUT] /play/matching-game/:topic/add-card
+    addMatchingGameCards(req, res, next) {
+        MatchingGame.updateOne({ topic: req.params.topic },
+            {
+                $push: { cards: {
+                    word: req.body.word,
+                    picture: req.body.picture,
+                } }
+            })
+            .then(() => res.redirect('/admin/play'))
+            .catch(next);
+    }
+
     // [GET] /play/word-guessing-game
     wordGuessingGame(req, res, next) {
         res.render('user/play/word-guessing-game', { layout: 'game' });

@@ -1,0 +1,26 @@
+<h2 class="text-center mt-2">Thêm mới thẻ chủ đề '{{topic}}'</h2>
+<form method="POST" action="/play/matching-game/{{topic}}/add-card?_method=PUT" name="update-matchinggame-form" onsubmit="return validateForm(event)">
+    <div class="mb-4">
+        <label for="word" class="form-label">Từ vựng</label>
+        <input type="text" class="form-control" id="word" name="word">
+    </div>
+    <div class="mb-4">
+        <label for="picture" class="form-label">Hình ảnh</label>
+        <input type="text" class="form-control" id="picture" name="picture">
+    </div>
+    <div class="mb-4 text-center">
+        <button type="submit" class="btn btn-primary">Thêm mới</button>
+    </div>
+</form>
+
+<script>
+    const validateForm = (e) => {
+        const updateMatchingGameForm = document.forms["update-matchinggame-form"];
+        const word = updateMatchingGameForm["word"].value;
+        const picture = updateMatchingGameForm["picture"].value;
+        if (word === "" || picture === "") {
+            alert("Thông tin thẻ còn trống!");
+            e.preventDefault();
+        }
+    }
+</script>

@@ -17,6 +17,10 @@
         <input type="text" class="form-control" id="video" name="video">
     </div>
     <div class="mb-4">
+        <label for="image" class="form-label">Image</label>
+        <input type="text" class="form-control" id="image" name="image">
+    </div>
+    <div class="mb-4">
         <label for="description" class="form-label">Mô tả</label>
         <textarea class="form-control" id="description" name="description"></textarea>
     </div>
@@ -32,8 +36,9 @@
         const name = createLessonsForm["name"].value;
         const workbook = createLessonsForm["workbook"].value;
         const video = createLessonsForm["video"].value;
+        const image = createLessonsForm["image"].value;
         const description = createLessonsForm["description"].value;
-        if (order === "" || name === "" || workbook === "" || video === "" || description === "") {
+        if (order === "" || name === "" || workbook === "" || video === "" || image === "" || description === "") {
             alert("Thông tin bài học còn trống!");
             e.preventDefault();
         }

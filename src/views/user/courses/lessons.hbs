@@ -1,0 +1,16 @@
+<div class="container-fluid text-center lessons-site">
+    {{!-- <div class="floating-border color-lessons">
+        <h2 class="text-bold">{{course.name}}</h2>
+    </div> --}}
+    <h2 class="text-bold">{{course.name}}</h2>
+    <div class="row">
+        {{#each lessons}}
+            <div class="col-md-3">
+                <a class="lessons-card ms-auto me-auto" href="/courses/lessons/{{this._id}}">
+                    <img src="{{this.image}}" class="lessons-img w-100">
+                    <p class="card-title color-lessons text-bold">{{this.name}}</p>
+                </a>
+            </div>
+        {{/each}}
+    </div>
+</div>

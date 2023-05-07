@@ -3,12 +3,13 @@ const router = express.Router();
 
 const courseController = require('../app/controllers/CourseController');
 
-router.get('/', courseController.index);
-router.get('/:slug', courseController.detail);
-router.get('/learn/:id', courseController.learn);
-router.post('/create', courseController.createCourses);
+router.get('/lessons/:lessonId', courseController.learn);
 router.post('/:id/lessons/create', courseController.createLessons);
+router.get('/:id/lessons', courseController.lessons);
+router.post('/create', courseController.createCourses);
 router.put('/:id', courseController.updateCourses);
-// router.put('/:id/lessons/create', courseController.updateLessons)
+router.get('/:slug', courseController.detail);
+router.get('/', courseController.index);
+// router.put('/:id/lessons/update', courseController.updateLessons)
 
 module.exports = router;

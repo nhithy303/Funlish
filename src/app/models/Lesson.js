@@ -10,6 +10,7 @@ const Lesson = new Schema(
         description: { type: String, default: '' },
         workbook: { type: String, default: '' },
         video: { type: String, default: '' },
+        image: { type: String, default: '' },
         quiz: [{ type: Schema.Types.ObjectId, ref: 'Quiz'}],
         slug: { type: String  },
     },

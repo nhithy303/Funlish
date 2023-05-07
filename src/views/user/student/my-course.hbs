@@ -7,13 +7,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Progress</th>
-                    <th scope="col">Result</th>
-                    <th scope="col">Registered at</th>
                     <th scope="col"></th>
-                    {{!-- <th scope="col">Handle</th> --}}
+                    <th scope="col">Tên khóa học</th>
+                    <th scope="col">Tiến độ</th>
+                    <th scope="col">Kết quả</th>
+                    <th scope="col">Ngày đăng ký</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +24,7 @@
                             <td>{{this.result}}</td>
                             <td>{{formatDateTime this.registeredDate}}</td>
                             <td>
-                                <a class="btn btn-blue" href="/courses/learn/{{this.courseId}}">Tiếp tục học</a>
+                                <a class="btn btn-blue" href="/courses/{{this.courseId}}/lessons">Tiếp tục học</a>
                             </td>
                         </tr>
                     {{else}}

@@ -1,0 +1,15 @@
+<nav class="navbar">
+    <div class="container-fluid">
+        <ul class="navbar-nav ms-auto me-auto w-100">
+            {{#each lessons}}
+                <li class="nav-item color-courses mt-1 course-menu" id="{{this._id}}">
+                    <a class="nav-link" href="/courses/lessons/{{this._id}}">{{this.name}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.getElementById("{{lesson._id}}").classList.add("active-custom");
+</script>

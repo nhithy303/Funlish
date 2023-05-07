@@ -34,16 +34,40 @@ class CourseController {
     }
 
     // [GET] /courses/learn/:id
-    learn(req, res, next) {
+    lessons(req, res, next) {
         if (req.session.username) {
-            Course.findOne({ _id: req.params.id })
-                .then(course =>
-                    res.render('user/courses/learn', {
+            Promise.all([Course.findOne({ _id: req.params.id }), Lesson.find({ courseId: req.params.id }).sort({ order: 'asc' })])
+                .then(([course, lessons]) =>
+                    res.render('user/courses/lessons', {
                         title: `Học ${course.name} |`,
                         student: req.session.username,
                         course: mongooseToObject(course),
+                        lessons: multipleMongooseToObject(lessons),
                     }),
                 )
+                .catch(next);
+        }
+        else {
+            res.redirect('/signin');
+        }
+    }
+
+    // [GET] /courses/lessons/:lessonId
+    learn(req, res, next) {
+        if (req.session.username) {
+            Lesson.findById({ _id: req.params.lessonId })
+                .then(lesson => {
+                    Lesson.find({ courseId: lesson.courseId }).sort({ order: 'asc' })
+                        .then(lessons => {
+                            res.render('user/courses/learn', {
+                                title: 'Học |',
+                                student: req.session.username,
+                                lesson: mongooseToObject(lesson),
+                                lessons: multipleMongooseToObject(lessons),
+                            })
+                        })
+                        .catch(next);
+                })
                 .catch(next);
         }
         else {

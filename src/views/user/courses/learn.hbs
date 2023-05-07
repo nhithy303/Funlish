@@ -1,1 +1,22 @@
-<h1>Start learning this course</h1>
+<div class="main container-fluid">
+    <div class="row">
+        <div class="col-md-2 text-center">
+            {{> lessons-sidebar lessons=lessons}}
+        </div>
+        <div class="col-md-10 text-center">
+            <div class="floating-border color-lessons">
+                <h2 class="text-bold">{{lesson.name}}</h2>
+            </div>
+            <div class="floating-border color-profile">
+                <h4 class="text-decoration-underline">Nội dung bài học</h4>
+                <p>{{lesson.description}}</p>
+                <a class="btn btn-blue btn-mb20" href="{{lesson.workbook}}" target="_blank">Tải tài liệu học tập</a>
+                <br>
+                <iframe width="560" height="315" src="{{lesson.video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="floating-border color-profile">
+                <h4 class="text-decoration-underline">Time for quiz!</h4>
+            </div>
+        </div>
+    </div>
+</div>

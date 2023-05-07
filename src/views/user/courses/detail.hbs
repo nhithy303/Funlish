@@ -3,14 +3,11 @@
         <div class="col-md-2">
             {{> courses-navbar courses=courses active=active}}
         </div>
-        <div class="col-md-8 text-center">
+        <div class="col-md-10 text-center">
             <h2>{{course.name}}</h2>
-            <img src="{{course.image}}" alt="{{course.name}}" class="w-100">
+            <img src="{{course.image}}" alt="{{course.name}}" class="w-75">
             <p>{{course.description}}</p>
             <button class="btn btn-red btn-mb20" onclick="registerCourse()">Đăng ký</button>
-        </div>
-        <div class="col-md-2">
-            
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const WordGuessingGame = new Schema(
     {
         enword: { type: String },
-        vnword: { type: String },
+        viword: { type: String },
     }
 );
 

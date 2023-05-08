@@ -62,7 +62,25 @@ class PlayController {
 
     // [GET] /play/word-guessing-game
     wordGuessingGame(req, res, next) {
-        res.render('user/play/word-guessing-game', { layout: 'game' });
+        WordGuessingGame.find({})
+            .then(words =>
+                res.render('user/play/word-guessing-game', {
+                    layout: 'game',
+                    words: multipleMongooseToObject(words),
+                })
+            )
+            .catch(next);
+    }
+    
+    // [POST] /play/word-guessing-game/create
+    createWords(req, res, next) {
+        const words = new WordGuessingGame({
+            enword: req.body.enword,
+            viword: req.body.viword,
+        });
+        words.save()
+            .then(() => res.redirect('/admin/play'))
+            .catch(next);
     }
     
 }

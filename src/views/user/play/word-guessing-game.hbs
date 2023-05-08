@@ -15,62 +15,6 @@
 </div>
 
 <script>
-    //Word and Hints Object
-
-    const options = {
-        old: "cũ/già",
-        new: "mới/trẻ",
-        cat: "con mèo",
-        dog: "con chó",
-        bird: "con Chim",
-        fish: "con cá",
-        mouse: "con chuột",
-        elephant: "con voi",
-        firaffe: "con hươu cao cổ",
-        lion: "con sư tử",
-        tiger: "con hổ",
-        monkey: "con khỉ",
-        horse: "con ngựa",
-        cow: "con bò",
-        sheep: "con ngựa",
-        pig: "con lợn",
-        chicken: "con gà",
-        frog: "con ếch",
-        butterfly: "con bướm",
-        bee: "con ong",
-        ant: "con kiến",
-        spider: "con nhện",
-        sun: "mặt trời",
-        moon: "mặt trăng",
-        star: "ngôi sao",
-        tree: "cây",
-        flower: "hoa",
-        grass: "cỏ",
-        cloud: "mây",
-        rain: "mưa",
-        snow: "tuyết",
-        icecream: "kem",
-        book: "sách",
-        pen: "bút",
-        pencil: "bút chì",
-        eraser: "cục tẩy",
-        ruler: "thước",
-        school: "trường học",
-        teacher: "giáo viên",
-        student: "học sinh",
-        classroom: "lớp học",
-        desk: "bàn học",
-        chair: "con ếch",
-        bag: "túi sách",
-        lunchbox: "hộp cơm",
-        waterbottle: "chai nước",
-        playground: "sân chơi",
-        ball: "quả bóng",
-        toy: "đồ chơi",
-        game: "trò chơi",
-        music: "âm nhạc",
-        dance: "khiêu vũ/múa",
-    };
 
     //Initial References
     const message = document.getElementById("message");
@@ -81,7 +25,14 @@
     const userInpSection = document.getElementById("user-input-section");
     const resultText = document.getElementById("result");
     const word = document.getElementById("word");
-    const words = Object.keys(options);
+    let words = [];
+    {{#each words}}
+        words.push({
+            enword: "{{this.enword}}",
+            viword: "{{this.viword}}",
+        })
+    {{/each}}
+    
     let randomWord = "",
         randomHint = "";
     let winCount = 0,
@@ -111,10 +62,13 @@
     const generateWord = () => {
         letterContainer.classList.remove("hide");
         userInpSection.innerText = "";
-        randomWord = words[generateRandomValue(words)];
-        randomHint = options[randomWord];
-        hintRef.innerHTML = `<div id="wordHint">
-  <span>Từ tiếng Việt: </span> ${randomHint}</div>`;
+        const randomNumber = words[generateRandomValue(words)];
+        randomWord = randomNumber.enword;
+        randomHint = randomNumber.viword;
+        hintRef.innerHTML = `
+            <div id="wordHint">
+                <span>Từ tiếng Việt: </span> ${randomHint}
+            </div>`;
         let displayItem = "";
         randomWord.split("").forEach((value) => {
             displayItem += '<span class="inputSpace">_ </span>';
@@ -122,7 +76,7 @@
 
         //Display each element as span
         userInpSection.innerHTML = displayItem;
-        userInpSection.innerHTML += `<div id='chanceCount'>Chances Left: ${lossCount}</div>`;
+        userInpSection.innerHTML += `<div id='chanceCount'>Cơ hội còn lại: ${lossCount}</div>`;
     };
 
     //Initial Function
@@ -182,8 +136,8 @@
                     message.innerText = `Incorrect Letter`;
                     message.style.color = "#ff0000";
                     if (lossCount == 0) {
-                        word.innerHTML = `The word was: <span>${randomWord}</span>`;
-                        resultText.innerHTML = "Game Over";
+                        word.innerHTML = `Đáp án: <span>${randomWord}</span>`;
+                        resultText.innerHTML = "Trò chơi kết thúc";
                         blocker();
                     }
                 }

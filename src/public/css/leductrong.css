@@ -1,0 +1,80 @@
+
+html, body {
+    margin: center;
+    position: relative;
+}
+
+html {
+    background-color: #ffc544;
+}
+/* .header {
+    height: 120px;
+    width: 100%;
+    background-color: red;
+    padding-bottom: auto;
+} */
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    padding-right: 0;
+    margin: 30px 15%;
+    gap: 8px;
+}
+.khung {
+    background-color: #fff4e3;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+#avatar {
+    width: 250px;
+    height: 250px;
+    background-image: url(https://gamek.mediacdn.vn/133514250583805952/2022/5/18/photo-1-16528608926331302726659.jpg);
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+}
+.khung1 {
+    flex-shrink: 0;
+    flex-basis: 280px;
+}
+.khung2 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2px;
+    width: 50%;
+    flex-shrink: 0;
+    flex-basis: 790px;
+}
+.image {
+    width:150px;
+    height: 150px;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+}
+.khung_con {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.information-list,
+.list-sothich{
+    list-style: none;
+}
+.list-sothich {
+    margin-left: -40px;
+}
+
+
+
+

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trần Hoàng Yến Nhi | Funlish</title>
+        <link rel="icon" type="image/x-icon" href="/images/cat1.png">
+        <link rel="stylesheet" href="/css/tranhoangyennhi.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <header id="top">
+            <nav class="topnav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#post">Post</a></li>
+                    <li><a href="/" class="logo"><img src="/images/tranhoangyennhi/paw.png" width="30px"></a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" id="btn-login">Log in</a></li>
+                </ul>
+            </nav>
+            <div id="modal-login" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h3>Log in</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post" name="form-login" onsubmit="return logIn()">
+                            <input type="text" id="login-username" name="login-username" placeholder="Username"><br>
+                            <input type="password" id="login-password" name="login-password" placeholder="Password"><br>
+                            <button type="submit">Log in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="row">
+                <div class="col-8">
+                    <h2 id="post">Post</h2>
+                    <div class="slideshow-container">
+                        <div class="slide fade" style="display: block;">
+                            <img src="/images/tranhoangyennhi/post1.jpg" width="100%">
+                            <div class="caption">Transvaal daisy</div>
+                        </div>
+                        <div class="slide fade">
+                            <img src="/images/tranhoangyennhi/post2.jpg" width="100%">
+                            <div class="caption">Canterbury bell</div>
+                        </div>
+                        <div class="slide fade">
+                            <img src="/images/tranhoangyennhi/post3.jpg" width="100%">
+                            <div class="caption">Sunflower</div>
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="pink-container about">
+                        <h2 id="about">About</h2>
+                        <h3>Basic infomation</h3>
+                        <ul>
+                            <li>Full name: Tran Hoang Yen Nhi</li>
+                            <li>Date of birth: March 30th, 2001</li>
+                            <li>Gender: Female</li>
+                            <li><a href="tel:0833336067">Phone: 0833336067</a></li>
+                            <li>
+                                <address>
+                                    <a href="mailto:hoangnhi3712@gmail.com" style="font-style: normal;">
+                                        Email: hoangnhi3712@gmail.com
+                                    </a>
+                                </address>
+                            </li>
+                            <li>Address: Phu Nhuan District, Ho Chi Minh City</li>
+                        </ul>
+                        <h3>Education</h3>
+                        <ul>
+                            <li>
+                                2019 - 2020: Ho Chi Minh City University of Social Sciences and Humanities<br>
+                                <p class="faculty">Journalism and Communication</p>
+                            </li>
+                            <li>
+                                2021 - present: Ho Chi Minh City University of Education<br>
+                                <p class="faculty">Information Technology</p>
+                            </li>
+                        </ul>
+                        <h3>Languages</h3>
+                        <ul>
+                            <li>Vietnamese</li>
+                            <hr class="languages vi">
+                            <li>English</li>
+                            <hr class="languages en">
+                            <li>Korean</li>
+                            <hr class="languages kr">
+                        </ul>
+                    </div>
+                    <div class="pink-container">
+                        <h2 id="contact">Contact</h2>
+                        <nav class="topnav center" style="border: none;">
+                            <ul>
+                                <li>
+                                    <a href="https://www.facebook.com/hoangnhi.3003/" target="_blank" custom-title="Hoàng Nhi" class="contact">
+                                        <img src="/images/tranhoangyennhi/facebook.png" width="40px">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/meiderato/" target="_blank" custom-title="meiderato" class="contact">
+                                        <img src="/images/tranhoangyennhi/instagram.png" width="40px">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://github.com/nhithy303" target="_blank" custom-title="nhithy303" class="contact">
+                                        <img src="/images/tranhoangyennhi/github.png" width="40px">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="mailto:hoangnhi3712@gmail.com" target="_blank" custom-title="hoangnhi3712@gmail.com" class="contact">
+                                        <img src="/images/tranhoangyennhi/gmail.png" width="40px">
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="pink-container">
+                        <h2 id="qna">Q&A</h2>
+                        <form action="" method="get" name="form-qna" class="form-qna" onsubmit="return validate()">
+                            <input type="text" id="qna-name" name="qna-name" placeholder="Your name"><br>
+                            <input type="email" id="qna-email" name="qna-email" placeholder="Email"><br>
+                            <textarea id="qna-question" name="qna-question" rows="3" style="resize: none;" placeholder="How can I help you?"></textarea><br>
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            &copy Copyright 2023 Funlish. All rights reserved.
+        </footer>
+        <div class="chat contact">
+            <a href="http://m.me/hoangnhi.3003" custom-title="Chat with me">
+                <img src="/images/tranhoangyennhi/speech-bubble.png" style="width: 50px;">
+            </a>
+        </div>
+        <div class="up">
+            <a href="#top">
+                <img src="/images/tranhoangyennhi/up-arrow.png" style="width: 40px;">
+            </a>
+        </div>
+        <script src="/script/tranhoangyennhi.js"></script>
+    </body>
+</html>

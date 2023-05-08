@@ -9,9 +9,10 @@
     </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
-
+    
+    {{!-- Matching Game --}}
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <form method="POST" action="/play/matching-game/create" name="create-topic-form" onsubmit="return validateForm(event)">
+        <form method="POST" action="/play/matching-game/create" name="create-topic-form" onsubmit="return validateMatchingGameForm(event)">
             <div class="row">
                 <div class="col-md-2 mt-3 mb-3">
                     <label for="topic" class="form-label">Chủ đề</label>
@@ -49,21 +50,61 @@
         </ol>
     </div>
 
+    {{!-- Word Guessing Game --}}
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-        <h4>Word guessing game</h4>
+        <form method="POST" action="/play/word-guessing-game/create" name="create-words-form" onsubmit="return validateWordGuessingGameForm(event)">
+            <div class="input-group mt-3 mb-3 ps-5 pe-5">
+                <input type="text" class="form-control" placeholder="Từ tiếng Anh" id="enword" name="enword">
+                <span class="input-group-text">:</span>
+                <input type="text" class="form-control" placeholder="Nghĩa tiếng Việt" id="viword" name="viword">
+                <button type="submit" class="btn btn-primary">Thêm từ mới</button>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col"></th>
+                    <th scope="col">Từ tiếng Anh</th>
+                    <th scope="col">Nghĩa tiếng Việt</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each words}}
+                    <tr class="text-center">
+                        <th scope="row">{{increaseIndex @index}}</th>
+                        <td>{{this.enword}}</td>
+                        <td>{{this.viword}}</td>
+                    </tr>
+                {{else}}
+                <h2>Chưa có từ vựng nào được tạo!</h2>
+                {{/each}}
+            </tbody>
+        </table>
     </div>
 
+    {{!-- Fun Stories --}}
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-        <h4>Fun stories</h4>
+        <h4 class="text-center">Fun stories</h4>
     </div>
 
 </div>
 
 <script>
-    const validateForm = (e) => {
+    const validateMatchingGameForm = (e) => {
         const topic = document.forms["create-topic-form"]["topic"].value;
         if (topic === "") {
             alert("Thông tin chủ đề còn trống!");
+            e.preventDefault();
+        }
+    }
+
+    const validateWordGuessingGameForm = (e) => {
+        const createWordsForm = document.forms["create-words-form"];
+        const enword = createWordsForm["enword"];
+        const viword = createWordsForm["viword"];
+        if (enword === "" || viword === "") {
+            alert("Thông tin từ vựng còn trống!");
             e.preventDefault();
         }
     }

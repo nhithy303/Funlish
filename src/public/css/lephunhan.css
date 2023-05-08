@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+html * {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.header {
+    background-color: #FFE5D2;
+    text-align: center;
+    padding: 10px;
+}
+.topnav {
+    overflow: hidden;
+    background-color: none;
+}
+.topnav a {
+    float: right;
+    display: block;
+    color: #F2F2F2;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+    text-underline-position:below ;
+    padding: 14px 16px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+.topnav a:hover {
+    color: black;
+}
+.column1 {
+    float: left;
+    width: 25%;
+    text-align: left;
+    background-color: none;
+}
+.column2 {
+    float: left;
+    width: 75%;
+    text-align: right;
+    background-color: none;
+}
+.row::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.main {
+    padding: 0px;
+    background-color: #FFF5DE;
+}
+.footer {
+    background-color: #FFE5D2;
+    text-align: center;
+    padding: 10px;
+}
+@media screen and (max-width: 800px) {
+    .column1, .column2 {
+        width: 100%;
+        padding: 0;
+    }
+}
+@media screen and (max-width: 400px) {
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
+}

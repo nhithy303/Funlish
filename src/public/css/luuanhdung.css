@@ -1,0 +1,224 @@
+/* Layout */
+* {
+    box-sizing: border-box;
+}
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+@media only screen and (max-width: 768px) {
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+html {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-size: 16px;
+}
+.header {
+    background-color: #FFE5D2;
+    text-align: center;
+}
+.main {
+    background-color: #FDF3C0;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+.center {
+	text-align: center;
+}
+.right {
+	text-align: right;
+}
+.button {
+	display: inline-block;
+	width: 140px;
+	text-align: center;
+	padding: 14px 16px;
+    border-radius: 10px;
+	user-select: none;
+	cursor: pointer;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.button:hover {
+	text-decoration: underline;
+	box-shadow: 0px 0px 3px 3px whitesmoke inset;
+}
+.button:active {
+	filter: brightness(80%);
+}
+ul {
+    list-style-type: none;
+	padding-left: 0;
+}
+.floating-border {
+	text-align: center;
+	background-color: #ffe7c4;
+	border-radius: 10px;
+	padding: 5px 0;
+}
+.floating-border p, h3 {
+	padding-left: 15px;
+}
+* Menu navigation */
+.menu ul {
+    overflow: hidden;
+	padding-left: 0;
+	float: right;
+}
+.menu li {
+    float: left;
+}
+.menu li a {
+    display: block;
+    color: #F2F2F2;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 16px;
+    border-radius: 10px;
+    width: 140px;
+	user-select: none;
+}
+.menu li a:hover {
+    color: black;
+    box-shadow: 0px 0px 3px 3px whitesmoke inset;
+}
+.current-page {
+    box-shadow: 0px 0px 3px 3px whitesmoke inset;
+}
+@media only screen and (max-width: 768px) {
+	.menu ul {
+		float: none;
+	}
+	.menu li, .menu li a {
+		width: 100%;
+	}
+}
+
+/* Contact sidebar */
+.contact {
+    transition: transform .2s;
+    padding-top: 10px;
+    width: 60px;
+}
+.contact:hover {
+    transform: scale(1.2);
+}
+@media only screen and (max-width: 680px) {
+    .contact {
+        width: 40px;
+    }
+}
+
+/* Search bar */
+.search-container {
+	position: relative;
+	display: block;
+	height: 55px;
+	width: 55px;
+}
+.search-bar {
+	position: absolute;
+	left: 35px;
+	right: auto;
+	outline: none;
+	border: none;
+	width: 0px;
+	height: 100%;
+	transition-duration: 0.4s;
+	border-radius: 10px;
+	z-index: 1;
+}
+.search-bar:hover {
+	width: 300px;
+	padding-left: 20px;
+}
+.search-button {
+	position: relative;
+	user-select: none;
+	cursor: pointer;
+	z-index: 2;
+}
+.search-img {
+	width: 55px;
+	border-radius: 10px;
+}
+
+.column{
+	border: 2px solid #FFA114;
+	padding: 10px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	font-family: 'Roboto Mono', monospace;
+}
+.head{
+	font-family: 'Roboto Mono', monospace;
+	font-size: 40px;
+	padding-left: 40px;
+}
+.column h2,p{
+	text-align: center;
+}
+.column ul{
+	padding-left: 10px;
+	font-size: 20px;
+}
+.column img{
+	display: block;
+	margin: auto;
+}
+.column1 img{
+	display: block;
+	margin: auto;
+}
+input[type="text"], input[type="email"], textarea{
+	width: 80%;
+    padding: 10px;
+	border-radius: 30px;
+	text-align: center;
+    margin-bottom: 15px;
+	height: 60px;
+	padding: 10px;
+	border: 1px solid #0a0a0a;
+	float: left;
+	font-family: 'Roboto Mono', monospace;
+	padding-left: 10px;
+	font-size: 20px;
+}
+input[type="submit"]{
+	float: left;
+	width: 30%;
+	height: 40px;
+	border: 1px solid #FFD864;
+	background-color: #FFD864;
+	font-family: 'Roboto Mono', monospace;
+	padding-left: 10px;
+	font-size: 25px;
+	color: #FFA114;
+}

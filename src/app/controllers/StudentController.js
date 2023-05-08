@@ -112,6 +112,7 @@ class StudentController {
                     .then(() => res.redirect('/settings'))
                     .catch(next);
             })
+            .catch(next);
     }
     
 }

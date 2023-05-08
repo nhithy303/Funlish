@@ -8,7 +8,7 @@ router.get('/courses', adminController.courses);
 router.get('/courses/create', adminController.createCourses);
 router.get('/courses/update/:id', adminController.updateCourses);
 router.get('/courses/:id/lessons/create', adminController.createLessons);
-router.get('/courses/:courseId/lessons/:lessonId/update', adminController.updateLessons);
+router.get('/lessons/update/:id', adminController.updateLessons);
 router.get('/play/matching-game/cards/:topic', adminController.addMatchingGameCards);
 router.get('/play', adminController.play);
 router.get('/blog', adminController.blog);

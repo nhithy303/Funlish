@@ -91,7 +91,17 @@ class CourseController {
 
     // [PUT] /courses/:id
     updateCourses(req, res, next) {
-
+        Course.findById({ _id: req.params.id })
+            .then(course => {
+                course.name = req.body.name;
+                course.image = req.body.image;
+                course.icon = req.body.icon;
+                course.description = req.body.description;
+                course.save()
+                    .then(() => res.redirect(`/admin/courses/update/${course._id}`))
+                    .catch(next);
+            })
+            .catch(next);
     }
     
     // [POST] /courses/:id/lessons/create
@@ -115,6 +125,23 @@ class CourseController {
                         res.redirect(`/admin/courses/update/${course._id}`)
                     })
                     .catch();
+            })
+            .catch(next);
+    }
+
+    // [PUT] /courses/lessons/:id
+    updateLessons(req, res, next) {
+       Lesson.findById({ _id: req.params.id })
+            .then(lesson => {
+                lesson.order = req.body.order;
+                lesson.name = req.body.name;
+                lesson.workbook = req.body.workbook;
+                lesson.video = req.body.video;
+                lesson.image = req.body.image;
+                lesson.description = req.body.description;
+                lesson.save()
+                    .then(() => res.redirect(`/admin/lessons/update/${lesson._id}`))
+                    .catch(next);
             })
             .catch(next);
     }

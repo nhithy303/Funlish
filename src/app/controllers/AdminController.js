@@ -93,14 +93,13 @@ class AdminController {
         
     }
 
-    // [GET] /admin/courses/:courseId/lessons/:lessonId/update
+    // [GET] /admin/lessons/update/:id
     updateLessons(req, res, next) {
         if (req.session.admin) {
-            Lesson.findById({ _id: lessonId })
+            Lesson.findById({ _id: req.params.id })
                 .then(lesson => {
                     res.render('admin/lessons-update', {
                         layout: 'admin',
-                        courseId: req.params.courseId,
                         lesson: mongooseToObject(lesson),
                     });
                 })

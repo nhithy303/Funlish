@@ -527,11 +527,15 @@ textarea {
 }
 
 .play-site, .lessons-site {
-  background-image: url(/images/funlish-bgi.png);
+  background-image: url(/images/funlish-bgi-play.png);
   background-repeat: no-repeat;
   background-position: 0% 100%;
   background-size: contain;
   height: 922px;
+}
+
+.lessons-site {
+  background-image: url(/images/funlish-bgi-courses.png);
 }
 
 .play-card, .lessons-card {
@@ -606,7 +610,7 @@ textarea {
     width: 250px;
   }
 
-  .play-site {
+  .play-site, .lessons-site {
     height: 768px;
   }
 }
@@ -617,7 +621,7 @@ textarea {
     right: 7em;
   }
 
-  .play-site {
+  .play-site, .lessons-site {
     height: 640px;
   }
 }
@@ -646,7 +650,7 @@ textarea {
     width: 33.33%;
   }
 
-  .play-site {
+  .play-site, .lessons-site {
     height: unset;
   }
 }

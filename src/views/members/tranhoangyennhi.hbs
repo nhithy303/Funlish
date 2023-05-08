@@ -15,7 +15,13 @@
                     <li><a href="#post">Post</a></li>
                     <li><a href="/" class="logo"><img src="/images/tranhoangyennhi/paw.png" width="30px"></a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="#" id="btn-login">Log in</a></li>
+                    <li><a href="#" id="btn-login">
+                        {{#if loggedIn}}
+                        Log Out
+                        {{else}}
+                        Log In
+                        {{/if}}
+                    </a></li>
                 </ul>
             </nav>
             <div id="modal-login" class="modal">
@@ -25,9 +31,9 @@
                         <h3>Log in</h3>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post" name="form-login" onsubmit="return logIn()">
-                            <input type="text" id="login-username" name="login-username" placeholder="Username"><br>
-                            <input type="password" id="login-password" name="login-password" placeholder="Password"><br>
+                        <form action="/about/tran-hoang-yen-nhi/login" method="post" name="login-form" onsubmit="return validateLoginForm(event)">
+                            <input type="text" id="username" name="username" placeholder="Username"><br>
+                            <input type="password" id="password" name="password" placeholder="Password"><br>
                             <button type="submit">Log in</button>
                         </form>
                     </div>
@@ -39,27 +45,27 @@
                 <div class="col-8">
                     <h2 id="post">Post</h2>
                     <div class="slideshow-container">
-                        <div class="slide fade" style="display: block;">
-                            <img src="/images/tranhoangyennhi/post1.jpg" width="100%">
-                            <div class="caption">Transvaal daisy</div>
-                        </div>
-                        <div class="slide fade">
-                            <img src="/images/tranhoangyennhi/post2.jpg" width="100%">
-                            <div class="caption">Canterbury bell</div>
-                        </div>
-                        <div class="slide fade">
-                            <img src="/images/tranhoangyennhi/post3.jpg" width="100%">
-                            <div class="caption">Sunflower</div>
-                        </div>
+                        {{#each posts}}
+                            <div class="slide fade" style="display: none;">
+                                <div class="time">{{formatDateTime this.createdAt}}</div>
+                                <img src="{{this.image}}" width="100%">
+                                <div class="caption">{{this.quotes}}</div>
+                            </div>
+                        {{else}}
+                        <h3 class="center">Nothing has been posted here!</h3>
+                        {{/each}}
                         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
                         <a class="next" onclick="plusSlides(1)">&#10095;</a>
                     </div>
                     <br>
                     <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
+                        {{#each posts}}
+                            <span class="dot" onclick="currentSlide({{increaseIndex @index}})"></span>
+                        {{/each}}
                     </div>
+                    {{#if loggedIn}}
+                    {{> thyn-post}}
+                    {{/if}}
                 </div>
                 <div class="col-4">
                     <div class="pink-container about">
@@ -127,15 +133,11 @@
                             </ul>
                         </nav>
                     </div>
-                    <div class="pink-container">
-                        <h2 id="qna">Q&A</h2>
-                        <form action="" method="get" name="form-qna" class="form-qna" onsubmit="return validate()">
-                            <input type="text" id="qna-name" name="qna-name" placeholder="Your name"><br>
-                            <input type="email" id="qna-email" name="qna-email" placeholder="Email"><br>
-                            <textarea id="qna-question" name="qna-question" rows="3" style="resize: none;" placeholder="How can I help you?"></textarea><br>
-                            <button type="submit">Send</button>
-                        </form>
-                    </div>
+                    {{#if loggedIn}}
+                    {{> thyn-qna-list}}
+                    {{else}}
+                    {{> thyn-qna}}
+                    {{/if}}
                 </div>
             </div>
         </div>
@@ -152,6 +154,76 @@
                 <img src="/images/tranhoangyennhi/up-arrow.png" style="width: 40px;">
             </a>
         </div>
-        <script src="/script/tranhoangyennhi.js"></script>
     </body>
 </html>
+
+<script>
+    /* Post carousel */
+    let slideIndex = 1;
+
+    const showSlides = (n) => {
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+    const plusSlides = (n) => {
+        showSlides(slideIndex += n);
+    }
+
+    const currentSlide = (n) => {
+        showSlides(slideIndex = n);
+    }
+
+    /* Log in & Log out Button */
+    var btn = document.getElementById("btn-login");
+    {{#if loggedIn}}
+    btn.href = "/about/tran-hoang-yen-nhi/logout";
+    {{else}}
+
+    /* Log in modal */
+    btn.href = "#";
+    var modal = document.getElementById("modal-login");
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = () => {
+        modal.style.display = "block";
+    }
+    span.onclick = () => {
+        modal.style.display = "none";
+    }
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    {{/if}}
+
+    /* Validate log in information */
+    const validateLoginForm = (e) => {
+        const loginForm = document.forms["login-form"];
+        const username = loginForm["username"].value;
+        const password = loginForm["password"].value;
+        if (username === "" || password === "") {
+            alert("Lack of information!");
+            e.preventDefault();
+        }
+        else if (username !== "hoangnhi" || password !== "admin123") {
+            alert("Wrong username or password!");
+            e.preventDefault();
+        }
+    }
+
+</script>

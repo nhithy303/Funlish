@@ -83,6 +83,15 @@ footer {
 	color: white;
 	border-radius: 10px;
 }
+.qna-list {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.qna-list address {
+	text-align: right;
+	font-weight: bold;
+	text-decoration: underline;
+}
 
 /* Navigation bar */
 .topnav {
@@ -233,6 +242,17 @@ hr.kr {
 }
 .prev:hover, .next:hover {
     background-color: #A75D5D;
+}
+.time {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	background-color: #F5F5F5;
+	color: black;
+	text-align: right;
+	font-style: italic;
 }
 .caption {
     position: absolute;

@@ -1,0 +1,28 @@
+<div class="pink-container">
+    <h2 id="qna">Q&A</h2>
+    <form action="/about/tran-hoang-yen-nhi/ask" method="post" name="form-qna" class="form-qna" onsubmit="return validate()">
+        <input type="text" id="qna-name" name="name" placeholder="Your name"><br>
+        <input type="email" id="qna-email" name="email" placeholder="Email"><br>
+        <textarea id="qna-question" name="question" rows="3" style="resize: none;" placeholder="How can I help you?"></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+    const validate = () => {
+    const fullname = document.forms["form-qna"]["qna-name"].value;
+    const email = document.forms["form-qna"]["qna-email"].value;
+    const question = document.forms["form-qna"]["qna-question"].value;
+    if (fullname === "" || email === "" || question === "") {
+        alert("Lack of information!");
+        return false;
+    }
+    const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!document.forms["form-qna"]["qna-email"].value.match(mailFormat)) {
+        alert("Invalid email address!")
+        return false;
+    }
+        alert("Valid information!")
+        return true;
+    }
+</script>

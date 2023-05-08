@@ -1,0 +1,20 @@
+<div class="pink-container">
+    <h2 id="qna">What's in my mind today?</h2>
+    <form action="/about/tran-hoang-yen-nhi/post" method="post" name="post-form" class="form-qna" onsubmit="return validatePostForm(event)">
+        <input type="text" id="postImage" name="image" placeholder="Image"><br>
+        <textarea id="postQuotes" name="quotes" rows="3" style="resize: none;" placeholder="Quotes"></textarea><br>
+        <button type="submit">Post</button>
+    </form>
+</div>
+
+<script>
+    const validatePostForm = (e) => {
+        const postForm = document.forms["post-form"];
+        const image = postForm["postImage"];
+        const quotes = postForm["postQuotes"];
+        if (image === "" || quotes === "") {
+            alert("Lack of content!");
+            e.preventDefault();
+        }
+    }
+</script>

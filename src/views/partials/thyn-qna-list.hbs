@@ -1,0 +1,14 @@
+<div class="pink-container">
+    <h2 id="qna">Q&A</h2>
+    {{#each qna}}
+        <div class="qna-list">
+            <h4>{{increaseIndex @index}}/ From: {{this.name}} - {{formatDateTime this.createdAt}}</h4>
+            <p>{{this.question}}</p>
+            <address>
+                <a href="mailto:{{this.email}}" style="font-style: normal;">Reply</a>
+            </address>
+        </div>
+    {{else}}
+        <p class="center">No one has asked you anything!</p>
+    {{/each}}
+</div>
